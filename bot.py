@@ -14,6 +14,7 @@ from tgbot.filters.seller_filter import SellerFilter
 from tgbot.handlers.create_order import register_create_order
 from tgbot.handlers.base import register_back_cancel_order_buttons
 from tgbot.handlers.admin_orders_menu import register_admin_menu
+from tgbot.handlers.data import register_data_menu
 from tgbot.handlers.send_post import register_sending_post
 from tgbot.handlers.chat_with_seller_and_customer import (
     register_chat_with_customer
@@ -37,6 +38,7 @@ def register_all_filters(dp):
 def register_all_handlers(dp):
     register_create_order(dp)
     register_admin_menu(dp)
+    register_data_menu(dp)
     register_back_cancel_order_buttons(dp)
     register_sending_post(dp)
     register_chat_with_customer(dp)

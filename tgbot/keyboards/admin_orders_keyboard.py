@@ -11,6 +11,8 @@ from tgbot.models.db_commands.order import (
 from tgbot.services.show_order_info import order_info_string
 from tgbot.middlewares.translate import _
 
+from tgbot.keyboards.data_management_keyboard import make_data_menu_callback_dt
+
 
 orders_menu_callback_data = CallbackData(
     'orders_menu',
@@ -23,20 +25,15 @@ orders_menu_callback_data = CallbackData(
     'order_status'
 )
 
-send_message_for_customer_callback_data = CallbackData(
-    'send_message',
-    'customer_id'
-)
-
 
 def make_menu_callback_data(
         level,
-        filter='-',
-        orders='-',
-        user_id='-',
-        order_id='-',
-        customer_id='-',
-        order_status='-'
+        filter='',
+        orders='',
+        user_id='',
+        order_id='',
+        customer_id='',
+        order_status=''
 ):
     return orders_menu_callback_data.new(
         level=level,
@@ -80,6 +77,10 @@ async def orders_menu_keyboard(user_id: int):
                              callback_data=make_menu_callback_data(
                                  level=CURRENT_LEVEL + 1,
                                  filter='send_post'
+        )),
+        InlineKeyboardButton(text=_('All data'),
+                             callback_data=make_data_menu_callback_dt(
+                                 level=10
         ))
     ]
     markup.add(*buttons)

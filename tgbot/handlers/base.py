@@ -177,6 +177,11 @@ def register_back_cancel_order_buttons(dp: Dispatcher):
         state='*'
     )
     dp.register_callback_query_handler(
+        cancel_or_exit,
+        text='exit_data_menu',
+        state='*'
+    )
+    dp.register_callback_query_handler(
         leave_chat_button,
         chat_callback_data.filter(),
         state='live_chat'

@@ -1,10 +1,8 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.callback_data import CallbackData
 
-from tgbot.models.db_commands.car import (
-    select_all_car_brands,
-    select_all_car_colors
-)
+from tgbot.models.db_commands.car import select_all_car_brands
+from tgbot.models.db_commands.color import select_all_car_colors
 from tgbot.models.db_constants import STEERING_WHEEL_POSITION
 from tgbot.middlewares.translate import _
 
@@ -18,9 +16,9 @@ create_order_callback_data = CallbackData(
 
 
 def order_callback_data(
-        car_brand_id='-',
-        steering_wheel_position='-',
-        car_color_id='-'
+        car_brand_id='',
+        steering_wheel_position='',
+        car_color_id=''
 ):
     return create_order_callback_data.new(
         car_brand_id=car_brand_id,

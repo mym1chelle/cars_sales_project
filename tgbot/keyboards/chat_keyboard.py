@@ -13,7 +13,7 @@ chat_callback_data = CallbackData(
 
 def make_chat_callback_data(
         seller_id,
-        customer_id='-'
+        customer_id=''
 ):
     return chat_callback_data.new(
         seller_id=seller_id,

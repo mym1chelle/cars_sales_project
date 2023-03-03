@@ -1,0 +1,187 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-03-03 10:54+0400\n"
+"PO-Revision-Date: 2023-03-02 14:06+0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: tgbot/handlers/admin_orders_menu.py:42
+#: tgbot/handlers/admin_orders_menu.py:45
+#: tgbot/handlers/admin_orders_menu.py:65
+msgid "Menu:"
+msgstr "Меню:"
+
+#: tgbot/handlers/admin_orders_menu.py:58
+msgid "Enter post text:"
+msgstr "Введите текст поста:"
+
+#: tgbot/handlers/admin_orders_menu.py:116
+msgid "Order {order} selected"
+msgstr "Заказ {order} был выбран"
+
+#: tgbot/handlers/admin_orders_menu.py:122
+msgid "Order {order} selection removed"
+msgstr "Выбор заказа {order} был отменен"
+
+#: tgbot/handlers/admin_orders_menu.py:157
+msgid "Select order status:"
+msgstr "Выберите статус заказа:"
+
+#: tgbot/handlers/base.py:29 tgbot/handlers/create_order.py:30
+msgid "Choose a car brand:"
+msgstr "Выберите марку автомобиля:"
+
+#: tgbot/handlers/base.py:35 tgbot/handlers/create_order.py:43
+msgid "Choose a steering wheel position:"
+msgstr "Выберите расположение руля:"
+
+#: tgbot/handlers/base.py:40 tgbot/handlers/create_order.py:58
+msgid "Choose car color:"
+msgstr "Выберите цвет автомобиля:"
+
+#: tgbot/handlers/base.py:45 tgbot/handlers/create_order.py:72
+msgid "Add a comment to the order:"
+msgstr "Добавьте комментарий к заказу:"
+
+#: tgbot/handlers/base.py:75 tgbot/handlers/create_order.py:101
+msgid ""
+"\n"
+"Your order\n"
+"{order}\n"
+"has been created"
+msgstr ""
+"\n"
+"Ваш заказ\n"
+"{order}\n"
+"был создан"
+
+#: tgbot/handlers/echo.py:8
+msgid "Hello, user!"
+msgstr "Привет, чувак!"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:65
+msgid "Available orders ({count})"
+msgstr "Доступные заказы ({count})"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:72
+msgid "Selected orders ({count})"
+msgstr "Выбранные заказы ({count})"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:79
+msgid "Send post"
+msgstr "Отправить пост"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:88
+#: tgbot/keyboards/admin_orders_keyboard.py:147
+#: tgbot/keyboards/admin_orders_keyboard.py:226
+#: tgbot/keyboards/admin_orders_keyboard.py:309
+#: tgbot/keyboards/admin_orders_keyboard.py:336
+msgid "Exit"
+msgstr "Выйти"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:138
+#: tgbot/keyboards/admin_orders_keyboard.py:177
+#: tgbot/keyboards/admin_orders_keyboard.py:216
+#: tgbot/keyboards/admin_orders_keyboard.py:298
+#: tgbot/keyboards/admin_orders_keyboard.py:325
+#: tgbot/keyboards/create_order_keyboard.py:71
+#: tgbot/keyboards/create_order_keyboard.py:100
+#: tgbot/keyboards/create_order_keyboard.py:123
+msgid "Back"
+msgstr "Назад"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:167
+msgid "Select order"
+msgstr "Выбрать заказ"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:188
+msgid "Write to the customer"
+msgstr "Написать заказчику"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:197
+msgid "Unselect"
+msgstr "Отменить выбор заказа"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:205
+msgid "Change order status"
+msgstr "Изменить статус заказа"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:246
+msgid "open"
+msgstr "открыт"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:254
+msgid "in progress"
+msgstr "в процессе"
+
+#: tgbot/keyboards/admin_orders_keyboard.py:262
+msgid "close"
+msgstr "закрыт"
+
+#: tgbot/keyboards/create_order_keyboard.py:48
+#: tgbot/keyboards/create_order_keyboard.py:77
+#: tgbot/keyboards/create_order_keyboard.py:106
+#: tgbot/keyboards/create_order_keyboard.py:129
+msgid "Cancel"
+msgstr "Отмена"
+
+#: tgbot/keyboards/create_order_keyboard.py:117
+msgid "No comment"
+msgstr "Без комментария"
+
+#: tgbot/services/show_order_info.py:6
+msgid ""
+"\n"
+"Model car: {car_brand}\n"
+"Steering wheel position: {wheel_position}\n"
+"Color: {color}\n"
+msgstr ""
+"\n"
+"Марка: {car_brand}\n"
+"Расположение руля: {wheel_position}\n"
+"Цвет: {color}\n"
+
+#: tgbot/services/show_order_info.py:18
+msgid "Order {car_brand} ({wheel_position}, {color})"
+msgstr "Заказ {car_brand} ({wheel_position}, {color})"
+
+#: tgbot/services/show_order_info.py:27
+msgid ""
+"\n"
+"Order: {order}\n"
+"Comment to the order:\n"
+"{comment}\n"
+msgstr ""
+"\n"
+"Заказ: {order}\n"
+"Комментарий к заказу:\n"
+"{comment}\n"
+
+#: tgbot/services/show_order_info.py:36
+msgid ""
+"\n"
+"Order: {order}\n"
+"Order status: {status}\n"
+"Comment to the order:\n"
+"{comment}\n"
+msgstr ""
+"\n"
+"Заказ: {order}\n"
+"Статус заказа: {status}\n"
+"Комментарий к заказу:\n"
+"{comment}\n"
+

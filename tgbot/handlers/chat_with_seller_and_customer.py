@@ -52,7 +52,7 @@ async def create_chat_with_customer(
     print(s)
 
 
-async def current_leave_chat(
+async def seller_and_customer_сhat(
         message: types.Message,
         state: FSMContext
         ):
@@ -72,4 +72,4 @@ async def current_leave_chat(
 
 def register_chat_with_customer(dp: Dispatcher):
     dp.register_message_handler(create_chat_with_customer, state='create_chat')
-    dp.register_message_handler(current_leave_chat, state='live_chat')
+    dp.register_message_handler(seller_and_customer_сhat, state='live_chat')

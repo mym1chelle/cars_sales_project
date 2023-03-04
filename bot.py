@@ -22,6 +22,7 @@ from tgbot.handlers.chat_with_seller_and_customer import (
 from tgbot.middlewares.environment import EnvironmentMiddleware
 from tgbot.middlewares.translate import i18n
 from bot_setting import bot, config, dp
+from tgbot.services.set_bot_commands import set_default_commands
 
 logger = logging.getLogger(__name__)
 
@@ -56,6 +57,8 @@ async def main(bot, config):
     register_all_middlewares(dp, config)
     register_all_filters(dp)
     register_all_handlers(dp)
+
+    await set_default_commands(dp)
 
     # start
     try:

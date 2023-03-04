@@ -27,7 +27,9 @@ async def show_admin_menu(message: types.Message):
     await main_page_menu(message)
 
 
-async def main_page_menu(message: types.Message | types.CallbackQuery, **kwargs):
+async def main_page_menu(
+        message: types.Message | types.CallbackQuery, **kwargs
+):
     """
     Admin main menu
 
@@ -67,7 +69,9 @@ async def list_orders_menu(
         await call.message.edit_text(text=_('Menu:'), reply_markup=markup)
 
 
-async def show_order_menu(call: types.CallbackQuery, filter, order_id, **kwargs):
+async def show_order_menu(
+        call: types.CallbackQuery, filter, order_id, **kwargs
+):
     """Menu of actions with a specific order.
     Depends on whether the selected order is or not
 
@@ -154,7 +158,7 @@ async def select_new_order_status_or_send_message(
         **kwargs
 ):
     """Processes the received order status and its update"""
- 
+
     order = await change_order_status(
         order_id=order_id,
         status=order_status
@@ -173,7 +177,11 @@ async def select_new_order_status_or_send_message(
     )
 
 
-async def navigate(call: types.CallbackQuery, callback_data: dict, state: FSMContext):
+async def navigate(
+        call: types.CallbackQuery,
+        callback_data: dict,
+        state: FSMContext
+):
     """Function for navigating through the inline menu"""
     current_level = str(callback_data.get('level'))
     orders = callback_data.get('orders')
@@ -194,8 +202,8 @@ async def navigate(call: types.CallbackQuery, callback_data: dict, state: FSMCon
 
     await current_level_func(
         call=call,
-        state=state,
         message=call,
+        state=state,
         orders=orders,
         order_id=order_id,
         user_id=user_id,

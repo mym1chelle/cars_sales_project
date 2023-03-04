@@ -88,12 +88,14 @@ class CarOrder(models.Model):
     car_brand = models.ForeignKey(
         'CarBrand',
         verbose_name='Car brand',
-        on_delete=models.PROTECT
+        null=True,
+        on_delete=models.SET_NULL
     )
     color = models.ForeignKey(
         'CarColor',
         verbose_name='Car color',
-        on_delete=models.PROTECT
+        null=True,
+        on_delete=models.SET_NULL
     )
     some_wishes = models.TextField(
         verbose_name='Wishes to order',

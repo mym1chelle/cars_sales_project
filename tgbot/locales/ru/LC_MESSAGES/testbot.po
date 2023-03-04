@@ -188,7 +188,7 @@ msgstr ""
 
 #: tgbot/handlers/menu/data.py:244
 msgid "Car color «{color}» has been added"
-msgstr ""
+msgstr "Цвет «{color}» был добавлен"
 
 #: tgbot/handlers/menu/data.py:271
 msgid ""

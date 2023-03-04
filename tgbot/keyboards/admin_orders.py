@@ -8,7 +8,7 @@ from tgbot.models.db_commands.order import (
     all_unselected_orders,
     get_order
 )
-from tgbot.services.show_order_info import order_info_string
+from tgbot.services.order_info import order_info_string
 from tgbot.middlewares.translate import _
 
 

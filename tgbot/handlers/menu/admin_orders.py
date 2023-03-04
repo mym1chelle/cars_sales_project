@@ -3,7 +3,7 @@ from aiogram.dispatcher import FSMContext
 
 from tgbot.middlewares.translate import _
 from tgbot.filters.seller_filter import SellerFilter
-from tgbot.services.show_order_info import (
+from tgbot.services.order_info import (
     order_info_admin_menu_with_status,
     order_info_admin_menu_without_status,
     order_info_string
@@ -13,7 +13,7 @@ from tgbot.models.db_commands.order import (
     select_or_unselect_order,
     change_order_status
 )
-from tgbot.keyboards.admin_orders_keyboard import (
+from tgbot.keyboards.admin_orders import (
     orders_menu_callback_data,
     orders_menu_keyboard,
     group_orders_keyboard,

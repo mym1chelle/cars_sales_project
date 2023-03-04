@@ -14,8 +14,8 @@ from tgbot.models.db_commands.color import (
     change_car_color,
     delete_car_color
 )
-from tgbot.keyboards.data_management_keyboard import (
-    orders_menu_callback_data,
+from tgbot.keyboards.data import (
+    data_menu_callback_data,
     all_data_menu_keyboard,
     queryset_list_keyboard,
     select_item_menu_keyboard,
@@ -72,7 +72,8 @@ async def selected_item_menu(
     """Displays a list of actions with the selected element"""
     if filter == 'cars':
         if action == 'add':
-            text = _('Enter a new car brand name (no more than 150 characters):')
+            text =\
+             _('Enter a new car brand name (no more than 150 characters):')
             async with state.proxy() as data:
                 data['filter'] = filter
                 data['message_id'] = call.message.message_id
@@ -119,10 +120,8 @@ async def add_edit_delete_item(
     if filter == 'cars' and brand_id:
         brand = await get_car_brand(brand_id=brand_id)
         if action == 'change':
-            text = _("""
-Enter a new car brand name, old name «{name}»
-(no more than 150 characters):"""
-                     ).format(
+            text = _("""Enter a new car brand name, old name «{name}»
+(no more than 150 characters):""").format(
                 name=brand.name)
             async with state.proxy() as data:
                 data['brand_id'] = brand_id
@@ -134,10 +133,8 @@ Enter a new car brand name, old name «{name}»
     elif filter == 'colors' and color_id:
         color = await get_car_color(color_id=color_id)
         if action == 'change':
-            text = _("""
-Enter a new color name, old name «{name}»
-(no more than 150 characters):
-""").format(
+            text = _("""Enter a new color name, old name «{name}»
+(no more than 150 characters):""").format(
                 name=color.name)
             async with state.proxy() as data:
                 data['color_id'] = color_id
@@ -202,10 +199,8 @@ async def adding_a_new_item(message: types.Message, state: FSMContext):
                 chat_id=message.from_user.id,
                 message_id=message_id,
                 text=_("""
-<b>The number of characters is more than 150. Try again.</b>
-
-Enter a new car brand name (no more than 150 characters):
-"""),
+<b>The number of characters is more than 150.Try again.</b>
+Enter a new car brand name (no more than 150 characters):"""),
                 reply_markup=await select_item_menu_keyboard(
                     filter=filter,
                     action='add'
@@ -402,6 +397,7 @@ async def confirm_to_delete(
                     reply_markup=markup
                 )
 
+
 def register_data_menu(dp: Dispatcher):
     dp.register_message_handler(
         show_data_menu,
@@ -410,7 +406,7 @@ def register_data_menu(dp: Dispatcher):
     )
     dp.register_callback_query_handler(
         navigate,
-        orders_menu_callback_data.filter()
+        data_menu_callback_data.filter()
     )
     dp.register_message_handler(
         adding_a_new_item,

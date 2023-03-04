@@ -12,7 +12,7 @@ from tgbot.models.db_commands.color import (
 from tgbot.middlewares.translate import _
 
 
-orders_menu_callback_data = CallbackData(
+data_menu_callback_data = CallbackData(
     'manage_data',
     'level',
     'filter',
@@ -35,7 +35,7 @@ def make_data_menu_callback_dt(
         color_id="",
         action=""
 ):
-    return orders_menu_callback_data.new(
+    return data_menu_callback_data.new(
         level=level,
         filter=filter,
         brand_id=brand_id,

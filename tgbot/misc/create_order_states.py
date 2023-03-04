@@ -6,4 +6,3 @@ class CreateOrderStates(StatesGroup):
     select_steering_wheel_position = State()
     select_car_color = State()
     add_order_wishes = State()
-    

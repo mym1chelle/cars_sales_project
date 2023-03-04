@@ -4,8 +4,8 @@ from aiogram.dispatcher.filters.builtin import CommandStart
 from tgbot.misc.create_order_states import CreateOrderStates
 from tgbot.models.db_commands.user import add_user
 from tgbot.models.db_commands.order import add_order
-from tgbot.services.show_order_info import order_info_for_customer
-from tgbot.keyboards.create_order_keyboard import (
+from tgbot.services.order_info import order_info_for_customer
+from tgbot.keyboards.order import (
     create_order_callback_data,
     select_car_brand_keyboard,
     select_steering_wheel_position_keyboard,
@@ -59,7 +59,8 @@ async def select_car_color(
         reply_markup=await select_car_color_keyboard()
     )
     async with state.proxy() as data:
-        data['steering_wheel_position'] = callback_data['steering_wheel_position']
+        data['steering_wheel_position'] = \
+            callback_data['steering_wheel_position']
     await CreateOrderStates.select_car_color.set()
 
 

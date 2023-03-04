@@ -4,7 +4,7 @@ from aiogram.dispatcher import FSMContext
 from bot_setting import bot, dp
 from tgbot.middlewares.translate import _
 from tgbot.models.db_commands.user import get_user
-from tgbot.keyboards.chat_keyboard import leave_chat_with_the_customer_keyboard
+from tgbot.keyboards.chat import leave_chat_with_the_customer_keyboard
 
 
 async def create_chat_with_customer(
@@ -43,7 +43,9 @@ async def create_chat_with_customer(
     await state.set_state('live_chat')
 
     #  Set the state to the client for messaging
-    state_customer = dp.current_state(chat=customer.user_id, user=customer.user_id)
+    state_customer = dp.current_state(
+        chat=customer.user_id, user=customer.user_id
+        )
     print(state_customer)
     async with state_customer.proxy() as data:
         data['seller_id'] = message.from_user.id

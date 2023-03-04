@@ -4,7 +4,7 @@ from aiogram.dispatcher import FSMContext
 from bot_setting import bot
 from tgbot.middlewares.translate import _
 from tgbot.models.db_commands.user import get_all_clients_user_ids
-from tgbot.keyboards.admin_orders_keyboard import group_orders_keyboard
+from tgbot.keyboards.admin_orders import group_orders_keyboard
 
 
 async def sending_post_for_all_clients(
@@ -43,4 +43,6 @@ async def sending_post_for_all_clients(
 
 
 def register_sending_post(dp: Dispatcher):
-    dp.register_message_handler(sending_post_for_all_clients, state='send_post')
+    dp.register_message_handler(
+        sending_post_for_all_clients, state='send_post'
+    )

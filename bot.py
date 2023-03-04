@@ -5,24 +5,26 @@ from tgbot.config import django_setting
 # setting environment variable and allowing to use ASGI
 django_setting()
 
-# from aiogram import Dispatcher
-# from aiogram.contrib.fsm_storage.memory import MemoryStorage
-# from aiogram.contrib.fsm_storage.redis import RedisStorage2
-
 
 from tgbot.filters.seller_filter import SellerFilter
-from tgbot.handlers.create_order import register_create_order
-from tgbot.handlers.base import register_back_cancel_order_buttons
-from tgbot.handlers.admin_orders_menu import register_admin_menu
-from tgbot.handlers.data import register_data_menu
-from tgbot.handlers.send_post import register_sending_post
-from tgbot.handlers.chat_with_seller_and_customer import (
-    register_chat_with_customer
-    )
+
+from tgbot.handlers.menu.admin_orders import register_admin_menu
+from tgbot.handlers.menu.data import register_data_menu
+from tgbot.handlers.menu.languages import registration_language_menu
+
+from tgbot.handlers.order import register_create_order
+from tgbot.handlers.post import register_sending_post
+from tgbot.handlers.chat import register_chat_with_customer
+
+from tgbot.handlers.base import register_cancel_or_exit_buttons
+from tgbot.handlers.base import register_back_button_for_states
+from tgbot.handlers.base import register_of_additional_ordeer_buttons
+
 from tgbot.middlewares.environment import EnvironmentMiddleware
 from tgbot.middlewares.translate import i18n
 from bot_setting import bot, config, dp
 from tgbot.services.set_bot_commands import set_default_commands
+
 
 logger = logging.getLogger(__name__)
 
@@ -37,12 +39,15 @@ def register_all_filters(dp):
 
 
 def register_all_handlers(dp):
-    register_create_order(dp)
     register_admin_menu(dp)
     register_data_menu(dp)
-    register_back_cancel_order_buttons(dp)
+    registration_language_menu(dp)
+    register_create_order(dp)
     register_sending_post(dp)
     register_chat_with_customer(dp)
+    register_cancel_or_exit_buttons(dp)
+    register_back_button_for_states(dp)
+    register_of_additional_ordeer_buttons(dp)
 
 
 async def main(bot, config):

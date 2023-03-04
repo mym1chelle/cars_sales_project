@@ -99,7 +99,9 @@ async def group_orders_keyboard(filter: str, user_id: int):
     if filter == 'unselected':
         orders = await all_unselected_orders()
         for order in orders:
-            button_text = order_info_string(order)
+            button_text = _('Order {order}').format(
+                order=order_info_string(order)
+            )
             callback_data = make_menu_callback_data(
                 level=CURRENT_LEVEL + 1,
                 order_id=order.id,
@@ -114,7 +116,9 @@ async def group_orders_keyboard(filter: str, user_id: int):
     elif filter == 'selected':
         orders = await all_selected_orders(user_id=user_id)
         for order in orders:
-            button_text = order_info_string(order)
+            button_text = _('Order {order}').format(
+                order=order_info_string(order)
+            )
             callback_data = make_menu_callback_data(
                 level=CURRENT_LEVEL + 1,
                 order_id=order.id,

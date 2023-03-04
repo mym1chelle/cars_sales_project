@@ -134,7 +134,7 @@ async def add_edit_delete_item(
         color = await get_car_color(color_id=color_id)
         if action == 'change':
             text = _("""Enter a new color name, old name «{name}»
-(no more than 150 characters):""").format(
+(no more than 100 characters):""").format(
                 name=color.name)
             async with state.proxy() as data:
                 data['color_id'] = color_id

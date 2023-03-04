@@ -154,11 +154,10 @@ async def leave_chat_button(
     await state_seller.finish()
     await call.message.delete()
     await call.answer(text=_('You have left the chat'))
-    alert_message = """
+    alert_message = _("""
 <b>The seller has left the chat</b>
 
-No further messages will be sent.
-    """
+No further messages will be sent.""")
     await bot.send_message(
         chat_id=customer_id,
         text=alert_message

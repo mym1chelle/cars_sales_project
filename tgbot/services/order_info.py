@@ -13,7 +13,7 @@ Color: {color}""").format(
 
 
 def order_info_string(order: CarOrder):
-    return _('Order {car_brand} ({wheel_position}, {color})').format(
+    return '{car_brand} ({wheel_position}, {color})'.format(
         car_brand=order.car_brand,
         wheel_position=order.steering_wheel_position,
         color=order.color
@@ -21,11 +21,7 @@ def order_info_string(order: CarOrder):
 
 
 def order_info_admin_menu_without_status(order: CarOrder):
-    order_info = '{car_brand} ({wheel_position}, {color})'.format(
-        car_brand=order.car_brand,
-        wheel_position=order.steering_wheel_position,
-        color=order.color
-    )
+    order_info = order_info_string(order)
     if order.some_wishes:
         return _("""Order: {order}
 Comment to the order:
@@ -35,11 +31,7 @@ Comment to the order:
 
 
 def order_info_admin_menu_with_status(order: CarOrder):
-    order_info = '{car_brand} ({wheel_position}, {color})'.format(
-        car_brand=order.car_brand,
-        wheel_position=order.steering_wheel_position,
-        color=order.color
-    )
+    order_info = order_info_string(order)
     if order.some_wishes:
         return _("""Order: {order}
 Order status: {status}

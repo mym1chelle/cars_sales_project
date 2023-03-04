@@ -122,13 +122,13 @@ async def some_action_with_order(
             order_id=order_id, user_id=user_id
         )
         show_order = order_info_string(order)
-        text = _('{order} selected').format(order=show_order)
+        text = _('Order {order} selected').format(order=show_order)
     elif filter == 'selected':
         order = await select_or_unselect_order(
             order_id=order_id
         )
         show_order = order_info_string(order)
-        text = _('{order} selection removed').format(order=show_order)
+        text = _('Order {order} selection removed').format(order=show_order)
     elif filter == 'change_order_status':
         text = _('Select order status:')
     markup = await only_one_order_menu_keyboard(
@@ -170,7 +170,7 @@ async def select_new_order_status_or_send_message(
         user_id=user_id
     )
     show_order = order_info_string(order)
-    text = _('{order} status has been changed').format(order=show_order)
+    text = _('Order {order} status has been changed').format(order=show_order)
     await call.message.edit_text(
         text=text,
         reply_markup=markup

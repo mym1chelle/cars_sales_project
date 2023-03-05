@@ -223,8 +223,8 @@ async def add_edit_delete_keyboard(filter, action, brand_id='', color_id=''):
                     brand_id=brand_id,
                     color_id=color_id
                 )
-                )
             )
+        )
     markup.row(
         InlineKeyboardButton(
             text=_('Back'),

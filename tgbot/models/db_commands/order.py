@@ -62,7 +62,7 @@ def all_selected_orders(user_id: int):
         user = User.objects.get(user_id=user_id)
         return CarOrder.objects.filter(
             seller=user.id
-            ).order_by('created_at')
+        ).order_by('created_at')
     except User.DoesNotExist:
         return None
 

@@ -73,7 +73,7 @@ async def selected_item_menu(
     if filter == 'cars':
         if action == 'add':
             text =\
-             _('Enter a new car brand name (no more than 150 characters):')
+                _('Enter a new car brand name (no more than 150 characters):')
             async with state.proxy() as data:
                 data['filter'] = filter
                 data['message_id'] = call.message.message_id
@@ -288,17 +288,17 @@ Enter a new car brand name (no more than 150 characters):
             else:
                 text = _('An error occurred while editing car model'),
             markup = await select_item_menu_keyboard(
-                    filter=filter,
-                    action='change',
-                    brand_id=brand_id
-                )
+                filter=filter,
+                action='change',
+                brand_id=brand_id
+            )
             await message.delete()
             await bot.edit_message_text(
                 chat_id=message.from_user.id,
                 message_id=message_id,
                 text=text,
                 reply_markup=markup
-                )
+            )
             await state.finish()
     elif color_id:
         if len(message.text) > 100:
@@ -330,30 +330,32 @@ Enter a new color name (no more than 100 characters):
             else:
                 text = _('An error occurred while changing the color'),
             markup = await select_item_menu_keyboard(
-                    filter=filter,
-                    action='change',
-                    color_id=color_id
-                )
+                filter=filter,
+                action='change',
+                color_id=color_id
+            )
             await message.delete()
             await bot.edit_message_text(
                 chat_id=message.from_user.id,
                 message_id=message_id,
                 text=text,
                 reply_markup=markup
-                )
+            )
             await state.finish()
 
 
 async def confirm_to_delete(
         call: types.CallbackQuery,
         callback_data: dict
-        ):
+):
     brand_id = callback_data.get('brand_id')
     color_id = callback_data.get('color_id')
     if brand_id:
         brand = await delete_car_brand(brand_id=brand_id)
         if brand:
-            await call.answer(text=_('The car brand has been successfully deleted'))
+            await call.answer(
+                text=_('The car brand has been successfully deleted')
+            )
             markup = await queryset_list_keyboard(filter='cars')
         else:
             text = _('An error occurred while deleting a car brand')
@@ -363,17 +365,19 @@ async def confirm_to_delete(
                 brand_id=brand_id
             )
             await call.message.edit_text(
-                    text=text,
-                    reply_markup=markup
-                )
+                text=text,
+                reply_markup=markup
+            )
         await call.message.edit_text(
-                    text=_('Car brands:'),
-                    reply_markup=markup
-                )
+            text=_('Car brands:'),
+            reply_markup=markup
+        )
     elif color_id:
         color = await delete_car_color(color_id=color_id)
         if color:
-            await call.answer(text=_('Car color has been successfully removed'))
+            await call.answer(
+                text=_('Car color has been successfully removed')
+            )
             markup = await queryset_list_keyboard(filter='colors')
         else:
             text = _('An error occurred while deleting a car color')
@@ -383,13 +387,13 @@ async def confirm_to_delete(
                 color_id=color_id
             )
             await call.message.edit_text(
-                    text=text,
-                    reply_markup=markup
-                )
+                text=text,
+                reply_markup=markup
+            )
         await call.message.edit_text(
-                    text=_('Car colors:'),
-                    reply_markup=markup
-                )
+            text=_('Car colors:'),
+            reply_markup=markup
+        )
 
 
 def register_data_menu(dp: Dispatcher):

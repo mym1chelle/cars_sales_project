@@ -21,7 +21,9 @@ def make_chat_callback_data(
     )
 
 
-async def leave_chat_with_the_customer_keyboard(seller_id: int, customer_id: int):
+async def leave_chat_with_the_customer_keyboard(
+        seller_id: int, customer_id: int
+):
     markup = InlineKeyboardMarkup(row=1)
     markup.row(
         InlineKeyboardButton(

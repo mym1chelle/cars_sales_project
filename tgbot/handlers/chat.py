@@ -36,7 +36,7 @@ async def create_chat_with_customer(
         text=first_message_in_chat,
         chat_id=customer.user_id
     )
-    
+
     async with state.proxy() as data:
         data['customer_id'] = customer.user_id
     await state.set_state('live_chat')
@@ -44,7 +44,7 @@ async def create_chat_with_customer(
     #  Set the state to the client for messaging
     state_customer = dp.current_state(
         chat=customer.user_id, user=customer.user_id
-        )
+    )
     async with state_customer.proxy() as data:
         data['seller_id'] = message.from_user.id
     await state_customer.set_state('live_chat')
@@ -53,7 +53,7 @@ async def create_chat_with_customer(
 async def seller_and_customer_сhat(
         message: types.Message,
         state: FSMContext
-        ):
+):
     data = await state.get_data()
     seller_id = data.get('seller_id')
     customer_id = data.get('customer_id')

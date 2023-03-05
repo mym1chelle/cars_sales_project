@@ -25,8 +25,7 @@ class User(models.Model):
     role = models.CharField(
         max_length=15, default='client',
         choices=USER_ROLE, verbose_name='User status'
-        )
-
+    )
     language = models.CharField(
         max_length=3,
         default='ru',

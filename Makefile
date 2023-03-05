@@ -24,3 +24,6 @@ compile:
 
 install:
 	poetry install
+
+lint:
+	poetry run flake8 tgbot tgbot_django

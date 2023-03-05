@@ -169,6 +169,8 @@
 ![Send post](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/send_post.png)
 При отправке сообщения отправляет его всем пользователям со статусом `client`
 
+![Sending post](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/sending_post.png)
+
 ## Команда `/data`
 Открывает меню для управления данными из базы данных
 ![Data main menu](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/data_main_menu.png)
@@ -188,6 +190,18 @@
 
 ***На данном шаге и последующих шагах присутствует кнопка «Назад» которая перемещает в меню на уровень выше***
 
+#### Добавить
+Добавляет новую марку автомобиля в базу данных
+![Add brand menu](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/add_brand_menu.png)
+
+Выводит информацию о том, какие критерии у нового названия автомобиля. При отправке сообщения сохраняет новое название в базе данных и уведомляет об успешном добавлении. 
+
+![Added brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/added_brand.png)
+
+При невыполненных критериях — выводит сообщение об ошибке с возможностью повторения действия.
+
+![Error add brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/error_add_brand.png)
+
 #### Меню марки автомобиля
 ![Brand menu](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/brand_menu.png)
 
@@ -199,12 +213,21 @@
 ##### Изменить
 ![Change brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/change_brand.png)
 
-Выводит информацию о том, какие критерии у нового названия автомобиля. При отправке сообщения сохраняет новое название в базе данных и уведомляет об успешном изменении. При невыполненных критериях — выводит сообщения об ошибке с возможностью повторения действия.
+Выводит информацию о том, какие критерии у нового названия автомобиля. При отправке сообщения сохраняет новое название в базе данных и уведомляет об успешном изменении. 
+
+![Changed brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/changed_brand.png)
+
+При невыполненных критериях — выводит сообщение об ошибке с возможностью повторения действия.
+
+![Error change brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/error_chang_brand.png)
 
 #### Удалить
 ![Delete brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/delete_brand.png)
 
 Выводит сообщение с для подтверждения удаления и кнопку «Да, удалить», при нажатии на которую происходит удаление записи и отправляется уведомление пользователю.
+
+![Deleted brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/deleted_brand.png)
+
 Если во время удаления произойдет ошибка, то будет отправлено соответствующее уведомление.
 
 ### Цвета автомобилей
@@ -217,6 +240,18 @@
 
 ***На данном шаге и последующих шагах присутствует кнопка «Назад» которая перемещает в меню на уровень выше***
 
+#### Добавить
+Добавляет новый цвет автомобиля в базу данных
+![Add color menu](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/add_color_menu.png)
+
+Выводит информацию о том, какие критерии у нового названия цвета. При отправке сообщения сохраняет новое название в базе данных и уведомляет об успешном добавлении. 
+
+![Added color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/added_color.png)
+
+При невыполненных критериях — выводит сообщение об ошибке с возможностью повторения действия.
+
+![Error add color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/error_add_color.png)
+
 #### Меню цвета автомобиля
 ![Color menu](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/color_menu.png)
 
@@ -228,10 +263,20 @@
 ##### Изменить
 ![Change color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/change_color.png)
 
-Выводит информацию о том, какие критерии у нового названия цвета. При отправке сообщения сохраняет новое название в базе данных и уведомляет об успешном изменении. При невыполненных критериях — выводит сообщения об ошибке с возможностью повторения действия.
+Выводит информацию о том, какие критерии у нового названия цвета. При отправке сообщения сохраняет новое название в базе данных и уведомляет об успешном изменении.
+
+![Changed color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/changed_color.png)
+
+При невыполненных критериях — выводит сообщение об ошибке с возможностью повторения действия.
+
+![Error change color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/error_change_color.png)
+
 
 #### Удалить
 ![Delete color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/delete_color.png)
 
 Выводит сообщение с для подтверждения удаления и кнопку «Да, удалить», при нажатии на которую происходит удаление записи и отправляется уведомление пользователю.
+
+![Deleted color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/deleted_color.png)
+
 Если во время удаления произойдет ошибка, то будет отправлено соответствующее уведомление.

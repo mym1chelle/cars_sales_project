@@ -1,8 +1,9 @@
-FROM python:3.9-buster
+FROM python:3.11.2
 ENV BOT_NAME=$BOT_NAME
 
-WORKDIR /usr/src/app/"${BOT_NAME:-tg_bot}"
+COPY . /.
+WORKDIR /.
 
-COPY requirements.txt /usr/src/app/"${BOT_NAME:-tg_bot}"
-RUN pip install -r /usr/src/app/"${BOT_NAME:-tg_bot}"/requirements.txt
-COPY . /usr/src/app/"${BOT_NAME:-tg_bot}"
+RUN pip install poetry
+RUN poetry config virtualenvs.in-project true
+RUN poetry install

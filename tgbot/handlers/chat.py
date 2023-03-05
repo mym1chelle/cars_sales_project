@@ -16,7 +16,6 @@ async def create_chat_with_customer(
     id_customer = data.get('customer_id')
     seller_id = message.from_user.id
     customer = await get_user(id=id_customer)
-    print(seller_id, customer.user_id)
     await bot.edit_message_text(
         chat_id=seller_id,
         message_id=message_id,
@@ -46,29 +45,21 @@ async def create_chat_with_customer(
     state_customer = dp.current_state(
         chat=customer.user_id, user=customer.user_id
         )
-    print(state_customer)
     async with state_customer.proxy() as data:
         data['seller_id'] = message.from_user.id
     await state_customer.set_state('live_chat')
-    s = dp.current_state(chat=customer.user_id, user=customer.user_id)
-    print(s)
 
 
 async def seller_and_customer_сhat(
         message: types.Message,
         state: FSMContext
         ):
-    print(message.text)
     data = await state.get_data()
     seller_id = data.get('seller_id')
-    print(seller_id)
     customer_id = data.get('customer_id')
-    print(customer_id)
     if customer_id:
-        print('Сообщение от customer')
         await bot.send_message(chat_id=customer_id, text=message.text)
     elif seller_id:
-        print('Сообщение от seller')
         await bot.send_message(chat_id=seller_id, text=message.text)
 
 

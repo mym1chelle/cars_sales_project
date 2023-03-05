@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': config.db.database,
         'USER': config.db.user,
         'PASSWORD': config.db.password,
-        'HOST': 'db',
+        'HOST': config.db.host,
         'PORT': config.db.port
     }
 }

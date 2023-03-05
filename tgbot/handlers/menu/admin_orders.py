@@ -163,7 +163,6 @@ async def select_new_order_status_or_send_message(
         order_id=order_id,
         status=order_status
     )
-    print(order)
     markup = await after_change_status_menu_keyboard(
         filter=filter,
         order_id=order_id,

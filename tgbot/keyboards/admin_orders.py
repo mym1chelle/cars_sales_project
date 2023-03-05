@@ -245,7 +245,6 @@ async def only_one_order_menu_keyboard(
     user_id: CallBackQuery.message.from_user.id
     """
     CURRENT_LEVEL = 3
-    print(filter)
     markup = InlineKeyboardMarkup(row_width=1)
     if filter == 'change_order_status':
         open_status_button = InlineKeyboardButton(
@@ -297,7 +296,6 @@ async def only_one_order_menu_keyboard(
             ]
         markup.add(*buttons)
     elif filter == 'unselected' or filter == 'selected':
-        print('Вернуться на два шага назад')
         # After selecting an order or canceling the selection,
         # you need to return not to the previous level,
         # but two levels higher in the general menu of orders
@@ -313,7 +311,6 @@ async def only_one_order_menu_keyboard(
             )
         )
     else:
-        print('Вернуться на шаг назад')
         markup.row(
             InlineKeyboardButton(
                 text=_('Back'),

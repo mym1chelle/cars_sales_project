@@ -39,7 +39,6 @@ async def back_button_in_create_order(
     await CreateOrderStates.previous()
 
     get_current_state = await state.get_state()
-    print(get_current_state)
 
     if get_current_state is None:
         return
@@ -80,7 +79,7 @@ async def back_button_for_states(
     — data menu
     """
     get_current_state = await state.get_state()
-    print(get_current_state)
+
     if get_current_state is None:
         return
     elif get_current_state == 'send_post':
@@ -146,10 +145,8 @@ async def leave_chat_button(
     """Ending a chat from the seller"""
     customer_id = callback_data.get('customer_id')
     seller_id = callback_data.get('seller_id')
-    print(seller_id, customer_id)
     state_seller = dp.current_state(user=seller_id, chat=seller_id)
     state_customer = dp.current_state(user=customer_id, chat=customer_id)
-    print(state_seller, state_customer)
     await state_customer.finish()
     await state_seller.finish()
     await call.message.delete()
@@ -170,7 +167,6 @@ async def cancel_or_exit_buttons(
 ):
     """Implementing cancel and exit buttons"""
     current = await state.get_state()
-    print(current)
     if current is None:
         await call.message.delete()
     else:

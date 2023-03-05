@@ -114,9 +114,6 @@ async def add_edit_delete_item(
     """Displays information after changing data
     Buttons are available to change the selected item or delete it
     """
-    print(filter)
-    print(brand_id)
-    print(action)
     if filter == 'cars' and brand_id:
         brand = await get_car_brand(brand_id=brand_id)
         if action == 'change':
@@ -191,7 +188,6 @@ async def adding_a_new_item(message: types.Message, state: FSMContext):
     data = await state.get_data()
     filter = data.get('filter')
     message_id = data.get('message_id')
-    print(message.text)
     if filter == 'cars':
         if len(message.text) > 150:
             await message.delete()
@@ -352,9 +348,7 @@ async def confirm_to_delete(
         call: types.CallbackQuery,
         callback_data: dict
         ):
-    print(callback_data)
     brand_id = callback_data.get('brand_id')
-    print(brand_id)
     color_id = callback_data.get('color_id')
     if brand_id:
         brand = await delete_car_brand(brand_id=brand_id)

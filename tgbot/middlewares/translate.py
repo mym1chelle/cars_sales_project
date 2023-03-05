@@ -16,7 +16,6 @@ class Localization(I18nMiddleware):
     async def get_user_locale(self, action: str, args: typing.Tuple[typing.Any]) -> str:
         user: types.User = types.User.get_current()
         language = await get_language(user_id=user.id, full_name=user.full_name)
-        print(language)
         return language or str(user.locale)
 
 

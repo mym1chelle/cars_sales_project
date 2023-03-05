@@ -21,3 +21,6 @@ update:
 
 compile:
 	poetry run pybabel compile -d tgbot/locales -D testbot
+
+install:
+	poetry install

@@ -1,5 +1,67 @@
 # Телеграм-бот для продажи автомобилей
 
+## Установка
+1. [Установить Poetry](https://python-poetry.org/docs/)
+2. [Установить Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+3. Клонировать проект в локальную директорию:
+```
+git clone git@github.com:mym1chelle/cars_sales_project.git
+```
+4. В директории клонированного проекта, установить зависимости командой:
+```
+make install
+```
+5. Создать файл `.env` и внести туда данные для работы проекта:
+```
+BOT_CONTAINER_NAME=car_bot
+BOT_IMAGE_NAME=botimage_name
+BOT_NAME=test_bot
+BOT_TOKEN=bot_token
+USE_REDIS=False
+ADMINS=admin_ids_list
+
+DB_USER=user
+DB_PASS=password
+DB_NAME=database_name
+DB_HOST=localhost
+DB_PORT=5432
+
+SECRET_KEY=django_secret_key
+DEBUG=True
+ALLOWED_HOSTS=allowed_hosts_list
+```
+
+
+## Запуск проекта
+Сервер Djnago запускается командой:
+```
+make run
+```
+Бот запускается командой:
+```
+make bot
+```
+## Запуск проекта в Docker
+В данном проекте присутствуют файлы `Dockerfile` и `docker-compose.yml` для запуска проекта в Docker.
+Для реализации этой возможности сначала следует установить [Docker](https://docs.docker.com/get-docker/)
+
+## Django
+
+Создание миграций выполняется командой:
+```
+make makemigrations
+```
+
+Применение миграций выполняется командой:
+```
+make migrate
+```
+
+Создание супер-пользователя выполняется командой:
+```
+make superuser
+```
+
 ## Команды
 #### Команды, доступные заказчику
 
@@ -35,7 +97,7 @@
 
 ***На данном шаге и последующих шагах присутствует кнопка «Назад» которая перемещает к предыдущему шагу в заказе***
 
-### Выбор расположения руля
+### Выбор цвета автомобиля
 
 ![Car color](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/select_color.png)
 
@@ -49,7 +111,7 @@
 При отправке сообщения боту создастся комментарий к заказу.
 Нажатие на кнопку «Без комментария» создаст заказ без комментария.
 
-### Завершение формаирования заказа
+### Завершение формирования заказа
 
 ![Order](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/end_create_order.png)
 
@@ -57,6 +119,9 @@
 
 ## Команда `/language`
 Команда вызывает меню с выбором используемого языка
+При вызове команды проверяется есть ли в базе данных текущий пользователь:
+* если такой пользователь существует, то берет информацию о нем для измененения языка
+* если пользователь не был найден в базе данных, то он добавляется. Язык по-умолчанию — русский.
 
 Бот поддерживает следующие языки:
 
@@ -65,9 +130,11 @@
 * арабский
 * иврит
 
-![Languages](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/languages.png)
+Кнопки для смены языка выводятся относительно текущего установленного языка для пользователя —
+выводятся все доступные языки, кроме текущего.
 
-При нажатии на кнопку с названием языка осуществляется переключение языка в боте и выводится уведомление о смене языка.
+![Languages](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/languages.png)
+При нажатии на кнопку с названием языка, изменяется текущий язык пользователя на выбранный и выводится уведомление о смене языка.
 
 ![New language](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/new_language.png)
 
@@ -126,7 +193,7 @@
 #### Чат с заказчиком
 ![Chat](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/chat.png)
 
-При отправке сообщения создается чат с заказчиком. После отправки сообщения, оно отправляется заказчику, а продавцу выводится сообщение о созданном чате с кнопкой «Выйти из чата»
+При отправке сообщения создается чат с заказчиком. После отправки сообщения, оно приходит заказчику, а продавцу выводится сообщение о созданном чате с кнопкой «Выйти из чата»
 
 *Окно продавца:*
 ![Chat seller](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/chat_seller.png)
@@ -140,7 +207,7 @@
 
 Дальнейший обмен сообщениями между заказчиком и продавцом осуществляется как в обычном чате между двумя пользователями.
 
-После того, как заказчик нажмет на кнопку «Выйти из чата», чат между заказчиком и пользователем будет закрыт и пользователь будет уведомлен о том, что последующие отправленые сообщения продавцу не будут обработаны и доставлены продавцу.
+После того, как продавец нажмет на кнопку «Выйти из чата», чат между заказчиком и пользователем будет закрыт и пользователь будет уведомлен о том, что последующие отправленые сообщения продавцу не будут обработаны и доставлены продавцу.
 
 ![Leave chat](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/leave_chat.png)
 
@@ -179,7 +246,7 @@
 * Марки автомобилей. В скобках — количество марок в базе данных
 * Цвета автомобилей. В скобках — количетсво цветов в базе данных
 
-*На данном шаге и последующих шагах присутствует кнопка «Выйти» которая выходит из меню управления данными*
+***На данном шаге и последующих шагах присутствует кнопка «Выйти» которая выходит из меню управления данными***
 
 ### Марки автомобилей
 ![All brands](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/all_brands.png)
@@ -219,7 +286,7 @@
 
 При невыполненных критериях — выводит сообщение об ошибке с возможностью повторения действия.
 
-![Error change brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/error_chang_brand.png)
+![Error change brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/error_change_brand.png)
 
 #### Удалить
 ![Delete brand](https://github.com/mym1chelle/cars_sales_project/raw/master/screens/delete_brand.png)

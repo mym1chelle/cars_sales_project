@@ -77,7 +77,7 @@ msgid ""
 msgstr ""
 "\n"
 "طلبك \n"
-"{ترتيب}\n"
+"{order}\n"
 "تم إنشاء"
 
 #: tgbot/handlers/chat.py:22

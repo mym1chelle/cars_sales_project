@@ -334,13 +334,11 @@ msgid "No comment"
 msgstr "אין תגובה"
 
 #: tgbot/services/order_info.py:6
-#, fuzzy
 msgid ""
 "Model car: {car_brand}\n"
 "Color: {color}"
 msgstr ""
 "דגם רכב: {car_brand}\n"
-"מיקום גלגל ההגה: {wheel_position}\n"
 "צֶבַע: {color}"
 
 #: tgbot/services/order_info.py:23

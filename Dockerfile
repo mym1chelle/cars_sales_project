@@ -4,6 +4,6 @@ ENV BOT_NAME=$BOT_NAME
 COPY . /.
 WORKDIR /.
 
-RUN pip install --without dev poetry
+RUN pip install
 RUN poetry config virtualenvs.in-project true
-RUN poetry install
+RUN poetry install --without dev poetry

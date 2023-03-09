@@ -30,6 +30,8 @@ SECRET_KEY = config.django.secret_key
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.django.use_debug
 
+INTERNAL_IPS = config.django.internal_ips
+
 ALLOWED_HOSTS = config.django.allowed_hosts
 
 

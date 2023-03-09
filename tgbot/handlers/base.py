@@ -6,7 +6,6 @@ from tgbot.models.db_commands.car import get_car_brand
 from tgbot.models.db_commands.color import get_car_color
 from tgbot.keyboards.order import (
     select_car_brand_keyboard,
-    select_steering_wheel_position_keyboard,
     select_car_color_keyboard,
     get_order_wishes_keyboard
 )
@@ -47,13 +46,6 @@ async def back_button_in_create_order(
         await call.message.edit_text(
             text=_('Choose a car brand:'),
             reply_markup=await select_car_brand_keyboard()
-        )
-
-    elif get_current_state == \
-            'CreateOrderStates:select_steering_wheel_position':
-        await call.message.edit_text(
-            text=_('Choose a steering wheel position:'),
-            reply_markup=await select_steering_wheel_position_keyboard()
         )
     elif get_current_state == 'CreateOrderStates:select_car_color':
         await call.message.edit_text(
@@ -182,7 +174,6 @@ async def create_order_without_wishes(
     data = await state.get_data()
     order = await add_order(
         customer_id=data['id_user'],
-        steering_wheel_position=data['steering_wheel_position'],
         car_brand_id=data['car_brand_id'],
         color_id=data['car_color_id'],
     )

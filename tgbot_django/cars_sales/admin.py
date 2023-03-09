@@ -25,7 +25,6 @@ class CarOrderAdmin(admin.ModelAdmin):
         'created_at',
         'customer',
         'car_brand',
-        'steering_wheel_position',
         'color',
         'some_wishes',
         'order_status',

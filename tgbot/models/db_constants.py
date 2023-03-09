@@ -9,11 +9,6 @@ ORDER_STATUS = [
     ('close', 'close')
 ]
 
-STEERING_WHEEL_POSITION = [
-    ('left', 'left'),
-    ('right', 'right'),
-]
-
 LANGUAGES = [
     ('ru', 'Русский'),
     ('en', 'English'),

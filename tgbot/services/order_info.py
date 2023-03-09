@@ -4,18 +4,15 @@ from tgbot.middlewares.translate import _
 
 def order_info_for_customer(order: CarOrder):
     return _("""Model car: {car_brand}
-Steering wheel position: {wheel_position}
 Color: {color}""").format(
         car_brand=order.car_brand,
-        wheel_position=order.steering_wheel_position,
         color=order.color
     )
 
 
 def order_info_string(order: CarOrder):
-    return '{car_brand} ({wheel_position}, {color})'.format(
+    return '{car_brand} ({color})'.format(
         car_brand=order.car_brand,
-        wheel_position=order.steering_wheel_position,
         color=order.color
     )
 

@@ -25,6 +25,7 @@ class DjangoConfig:
     secret_key: str
     use_debug: bool
     allowed_hosts: list[str]
+    internal_ips: list[str]
 
 
 @dataclass
@@ -60,7 +61,8 @@ def load_config(path: str = None):
         django=DjangoConfig(
             secret_key=env.str('SECRET_KEY'),
             use_debug=env.bool('DEBUG'),
-            allowed_hosts=list(map(str, env.list('ALLOWED_HOSTS')))
+            allowed_hosts=list(map(str, env.list('ALLOWED_HOSTS'))),
+            internal_ips=list(map(str, env.list('INTERNAL_IPS')))
         ),
         misc=Miscellaneous()
     )

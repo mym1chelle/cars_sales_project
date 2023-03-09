@@ -8,7 +8,6 @@ from tgbot.services.order_info import order_info_for_customer
 from tgbot.keyboards.order import (
     create_order_callback_data,
     select_car_brand_keyboard,
-    select_steering_wheel_position_keyboard,
     select_car_color_keyboard,
     get_order_wishes_keyboard
 )
@@ -34,21 +33,6 @@ async def select_car_brand(
     await CreateOrderStates.select_car_brand.set()
 
 
-async def select_steering_wheel_position(
-    call: types.CallbackQuery,
-    callback_data: dict,
-    state: FSMContext
-):
-    await call.message.edit_text(
-        text=_('Choose a steering wheel position:'),
-        reply_markup=await select_steering_wheel_position_keyboard(
-        )
-    )
-    async with state.proxy() as data:
-        data['car_brand_id'] = callback_data['car_brand_id']
-    await CreateOrderStates.select_steering_wheel_position.set()
-
-
 async def select_car_color(
     call: types.CallbackQuery,
     callback_data: dict,
@@ -59,8 +43,7 @@ async def select_car_color(
         reply_markup=await select_car_color_keyboard()
     )
     async with state.proxy() as data:
-        data['steering_wheel_position'] = \
-            callback_data['steering_wheel_position']
+        data['car_brand_id'] = callback_data['car_brand_id']
     await CreateOrderStates.select_car_color.set()
 
 
@@ -116,14 +99,9 @@ has been created"""
 def register_create_order(dp: Dispatcher):
     dp.register_message_handler(select_car_brand, CommandStart())
     dp.register_callback_query_handler(
-        select_steering_wheel_position,
-        create_order_callback_data.filter(),
-        state=CreateOrderStates.select_car_brand
-    )
-    dp.register_callback_query_handler(
         select_car_color,
         create_order_callback_data.filter(),
-        state=CreateOrderStates.select_steering_wheel_position
+        state=CreateOrderStates.select_car_brand
     )
     dp.register_callback_query_handler(
         add_order_wishes,

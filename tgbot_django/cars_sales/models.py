@@ -2,7 +2,6 @@ from django.db import models
 from tgbot.models.db_constants import (
     USER_ROLE,
     ORDER_STATUS,
-    STEERING_WHEEL_POSITION,
     LANGUAGES
 )
 
@@ -77,11 +76,6 @@ class CarOrder(models.Model):
         verbose_name='Customer',
         on_delete=models.PROTECT,
         related_name='customer'
-    )
-    steering_wheel_position = models.CharField(
-        max_length=15,
-        choices=STEERING_WHEEL_POSITION,
-        verbose_name='Steering wheel position'
     )
 
     car_brand = models.ForeignKey(

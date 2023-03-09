@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-05 00:38+0400\n"
+"POT-Creation-Date: 2023-03-09 14:23+0400\n"
 "PO-Revision-Date: 2023-03-05 00:23+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: he\n"
@@ -22,44 +22,40 @@ msgstr ""
 msgid "You do not have sufficient rights to use this feature"
 msgstr "אין לך מספיק זכויות להשתמש בתכונה זו"
 
-#: tgbot/handlers/base.py:49 tgbot/handlers/order.py:30
+#: tgbot/handlers/base.py:47 tgbot/handlers/order.py:29
 msgid "Choose a car brand:"
 msgstr "בחר מותג רכב:"
 
-#: tgbot/handlers/base.py:56 tgbot/handlers/order.py:43
-msgid "Choose a steering wheel position:"
-msgstr "בחר תנוחת הגה:"
-
-#: tgbot/handlers/base.py:61 tgbot/handlers/order.py:58
+#: tgbot/handlers/base.py:52 tgbot/handlers/order.py:42
 msgid "Choose car color:"
 msgstr "בחר צבע רכב:"
 
-#: tgbot/handlers/base.py:66 tgbot/handlers/order.py:73
+#: tgbot/handlers/base.py:57 tgbot/handlers/order.py:56
 msgid "Add a comment to the order:"
 msgstr "הוסף הערה להזמנה:"
 
-#: tgbot/handlers/base.py:89 tgbot/handlers/menu/admin_orders.py:46
+#: tgbot/handlers/base.py:80 tgbot/handlers/menu/admin_orders.py:46
 #: tgbot/handlers/menu/admin_orders.py:49
 #: tgbot/handlers/menu/admin_orders.py:69 tgbot/handlers/menu/data.py:45
 #: tgbot/handlers/menu/data.py:48
 msgid "Menu:"
 msgstr "תַפרִיט:"
 
-#: tgbot/handlers/base.py:111 tgbot/handlers/menu/data.py:58
-#: tgbot/handlers/menu/data.py:376
+#: tgbot/handlers/base.py:102 tgbot/handlers/menu/data.py:58
+#: tgbot/handlers/menu/data.py:372
 msgid "Car brands:"
 msgstr "מותגי רכב:"
 
-#: tgbot/handlers/base.py:113 tgbot/handlers/menu/data.py:60
-#: tgbot/handlers/menu/data.py:396
+#: tgbot/handlers/base.py:104 tgbot/handlers/menu/data.py:60
+#: tgbot/handlers/menu/data.py:394
 msgid "Car colors:"
 msgstr "צבעי רכב:"
 
-#: tgbot/handlers/base.py:156
+#: tgbot/handlers/base.py:145
 msgid "You have left the chat"
 msgstr "עזבת את הצ'אט"
 
-#: tgbot/handlers/base.py:157
+#: tgbot/handlers/base.py:146
 msgid ""
 "\n"
 "<b>The seller has left the chat</b>\n"
@@ -71,7 +67,7 @@ msgstr ""
 "\n"
 "לא יישלחו הודעות נוספות."
 
-#: tgbot/handlers/base.py:194 tgbot/handlers/order.py:102
+#: tgbot/handlers/base.py:181 tgbot/handlers/order.py:85
 msgid ""
 "\n"
 "Your order\n"
@@ -83,11 +79,11 @@ msgstr ""
 "{order}\n"
 "נוצר"
 
-#: tgbot/handlers/chat.py:23
+#: tgbot/handlers/chat.py:22
 msgid "You started a chat with a client"
 msgstr "התחלת צ'אט עם לקוח"
 
-#: tgbot/handlers/chat.py:30
+#: tgbot/handlers/chat.py:29
 msgid ""
 "\n"
 "<b>Message from the seller</b>\n"
@@ -127,7 +123,7 @@ msgstr "בחר סטטוס הזמנה:"
 msgid "Enter your message:"
 msgstr "הכנס את ההודעה שלך:"
 
-#: tgbot/handlers/menu/admin_orders.py:173
+#: tgbot/handlers/menu/admin_orders.py:172
 msgid "Order {order} status has been changed"
 msgstr "להזמין {order} הסטטוס השתנה"
 
@@ -139,7 +135,7 @@ msgstr "הזן שם מותג רכב חדש (לא יותר מ-150 תווים):"
 msgid "Enter a new color name (no more than 100 characters):"
 msgstr "הזן שם צבע חדש (לא יותר מ-100 תווים):"
 
-#: tgbot/handlers/menu/data.py:123
+#: tgbot/handlers/menu/data.py:120
 msgid ""
 "Enter a new car brand name, old name «{name}»\n"
 "(no more than 150 characters):"
@@ -147,17 +143,17 @@ msgstr ""
 "הזן שם מותג חדש לרכב, שם ישן «{name}»\n"
 "(לא יותר מ-150 תווים):"
 
-#: tgbot/handlers/menu/data.py:131 tgbot/handlers/menu/data.py:144
+#: tgbot/handlers/menu/data.py:128 tgbot/handlers/menu/data.py:141
 msgid "Are you sure you want to delete «{name}»?:"
 msgstr "האם אתה בטוח שברצונך למחוק את «{name}»?:"
 
-#: tgbot/handlers/menu/data.py:136
+#: tgbot/handlers/menu/data.py:133
 msgid ""
 "Enter a new color name, old name «{name}»\n"
 "(no more than 100 characters):"
 msgstr "הזן שם צבע חדש, שם ישן «{name}»(לא יותר מ-100 תווים):"
 
-#: tgbot/handlers/menu/data.py:201
+#: tgbot/handlers/menu/data.py:197
 msgid ""
 "\n"
 "<b>The number of characters is more than 150.Try again.</b>\n"
@@ -167,11 +163,11 @@ msgstr ""
 "<b>מספר התווים הוא יותר מ-150. נסה שוב.</b>\n"
 "הזן שם מותג רכב חדש (לא יותר מ-150 תווים):"
 
-#: tgbot/handlers/menu/data.py:213
+#: tgbot/handlers/menu/data.py:209
 msgid "The brand of the car «{brand}» has been added"
 msgstr "המותג של המכונית «{מותג}» נוסף"
 
-#: tgbot/handlers/menu/data.py:232 tgbot/handlers/menu/data.py:313
+#: tgbot/handlers/menu/data.py:228 tgbot/handlers/menu/data.py:309
 msgid ""
 "\n"
 "<b>The number of characters is more than 100. Try again.</b>\n"
@@ -183,11 +179,11 @@ msgstr ""
 "\n"
 "הזן שם צבע חדש (לא יותר מ-100 תווים):\n"
 
-#: tgbot/handlers/menu/data.py:244
+#: tgbot/handlers/menu/data.py:240
 msgid "Car color «{color}» has been added"
 msgstr "צבע המכונית «{color}» נוסף"
 
-#: tgbot/handlers/menu/data.py:271
+#: tgbot/handlers/menu/data.py:267
 msgid ""
 "\n"
 "<b>The number of characters is more than 150. Try again.</b>\n"
@@ -199,35 +195,35 @@ msgstr ""
 "\n"
 "הזן שם מותג רכב חדש (לא יותר מ-150 תווים):\n"
 
-#: tgbot/handlers/menu/data.py:289
+#: tgbot/handlers/menu/data.py:285
 msgid "The car model has been changed to «{brand}»"
 msgstr "דגם הרכב שונה ל «{brand}»"
 
-#: tgbot/handlers/menu/data.py:293
+#: tgbot/handlers/menu/data.py:289
 msgid "An error occurred while editing car model"
 msgstr "אירעה שגיאה בעת עריכת דגם המכונית"
 
-#: tgbot/handlers/menu/data.py:331
+#: tgbot/handlers/menu/data.py:327
 msgid "The color has been changed to «{color}»"
 msgstr "הצבע השתנה ל- «{color}»"
 
-#: tgbot/handlers/menu/data.py:335
+#: tgbot/handlers/menu/data.py:331
 msgid "An error occurred while changing the color"
 msgstr "אירעה שגיאה בעת שינוי הצבע"
 
-#: tgbot/handlers/menu/data.py:362
+#: tgbot/handlers/menu/data.py:357
 msgid "The car brand has been successfully deleted"
 msgstr "מותג הרכב נמחק בהצלחה"
 
-#: tgbot/handlers/menu/data.py:365
+#: tgbot/handlers/menu/data.py:361
 msgid "An error occurred while deleting a car brand"
 msgstr "אירעה שגיאה בעת מחיקת מותג רכב"
 
-#: tgbot/handlers/menu/data.py:382
+#: tgbot/handlers/menu/data.py:379
 msgid "Car color has been successfully removed"
 msgstr "צבע המכונית הוסר בהצלחה"
 
-#: tgbot/handlers/menu/data.py:385
+#: tgbot/handlers/menu/data.py:383
 msgid "An error occurred while deleting a car color"
 msgstr "אירעה שגיאה בעת מחיקת צבע של מכונית"
 
@@ -252,8 +248,8 @@ msgid "Send post"
 msgstr "שלח פוסט"
 
 #: tgbot/keyboards/admin_orders.py:83 tgbot/keyboards/admin_orders.py:148
-#: tgbot/keyboards/admin_orders.py:227 tgbot/keyboards/admin_orders.py:330
-#: tgbot/keyboards/admin_orders.py:361 tgbot/keyboards/data.py:75
+#: tgbot/keyboards/admin_orders.py:227 tgbot/keyboards/admin_orders.py:327
+#: tgbot/keyboards/admin_orders.py:358 tgbot/keyboards/data.py:75
 #: tgbot/keyboards/data.py:146 tgbot/keyboards/data.py:209
 #: tgbot/keyboards/data.py:241 tgbot/keyboards/languages.py:64
 msgid "Exit"
@@ -264,11 +260,11 @@ msgid "Order {order}"
 msgstr "להזמין {order}"
 
 #: tgbot/keyboards/admin_orders.py:139 tgbot/keyboards/admin_orders.py:178
-#: tgbot/keyboards/admin_orders.py:217 tgbot/keyboards/admin_orders.py:306
-#: tgbot/keyboards/admin_orders.py:319 tgbot/keyboards/admin_orders.py:350
+#: tgbot/keyboards/admin_orders.py:217 tgbot/keyboards/admin_orders.py:304
+#: tgbot/keyboards/admin_orders.py:316 tgbot/keyboards/admin_orders.py:347
 #: tgbot/keyboards/data.py:138 tgbot/keyboards/data.py:200
-#: tgbot/keyboards/data.py:230 tgbot/keyboards/order.py:69
-#: tgbot/keyboards/order.py:98 tgbot/keyboards/order.py:121
+#: tgbot/keyboards/data.py:230 tgbot/keyboards/order.py:65
+#: tgbot/keyboards/order.py:88
 msgid "Back"
 msgstr "חזור"
 
@@ -288,19 +284,19 @@ msgstr "בטל בחירה"
 msgid "Change order status"
 msgstr "שנה סטטוס הזמנה"
 
-#: tgbot/keyboards/admin_orders.py:252
+#: tgbot/keyboards/admin_orders.py:251
 msgid "open"
 msgstr "לִפְתוֹחַ"
 
-#: tgbot/keyboards/admin_orders.py:260
+#: tgbot/keyboards/admin_orders.py:259
 msgid "in progress"
 msgstr "בתהליך"
 
-#: tgbot/keyboards/admin_orders.py:268
+#: tgbot/keyboards/admin_orders.py:267
 msgid "close"
 msgstr "סגור"
 
-#: tgbot/keyboards/chat.py:28
+#: tgbot/keyboards/chat.py:30
 msgid "Leave the chat"
 msgstr "עזוב את הצ'אט"
 
@@ -328,26 +324,26 @@ msgstr "לִמְחוֹק"
 msgid "Yes, delete"
 msgstr "כן, למחוק"
 
-#: tgbot/keyboards/order.py:46 tgbot/keyboards/order.py:75
-#: tgbot/keyboards/order.py:104 tgbot/keyboards/order.py:127
+#: tgbot/keyboards/order.py:42 tgbot/keyboards/order.py:71
+#: tgbot/keyboards/order.py:94
 msgid "Cancel"
 msgstr "לְבַטֵל"
 
-#: tgbot/keyboards/order.py:115
+#: tgbot/keyboards/order.py:82
 msgid "No comment"
 msgstr "אין תגובה"
 
 #: tgbot/services/order_info.py:6
+#, fuzzy
 msgid ""
 "Model car: {car_brand}\n"
-"Steering wheel position: {wheel_position}\n"
 "Color: {color}"
 msgstr ""
 "דגם רכב: {car_brand}\n"
 "מיקום גלגל ההגה: {wheel_position}\n"
 "צֶבַע: {color}"
 
-#: tgbot/services/order_info.py:26
+#: tgbot/services/order_info.py:23
 msgid ""
 "Order: {order}\n"
 "Comment to the order:\n"
@@ -357,11 +353,11 @@ msgstr ""
 "הערה להזמנה:\n"
 "{comment}"
 
-#: tgbot/services/order_info.py:30
+#: tgbot/services/order_info.py:27
 msgid "Order: {order}"
 msgstr "להזמין: {order}"
 
-#: tgbot/services/order_info.py:36
+#: tgbot/services/order_info.py:33
 msgid ""
 "Order: {order}\n"
 "Order status: {status}\n"
@@ -373,7 +369,7 @@ msgstr ""
 "הערה להזמנה:\n"
 "{comment}"
 
-#: tgbot/services/order_info.py:44
+#: tgbot/services/order_info.py:41
 msgid ""
 "Order: {order}\n"
 "Order status: {status}"

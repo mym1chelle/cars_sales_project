@@ -74,7 +74,6 @@ async def save_order_wishes(
     )
     order = await add_order(
         customer_id=data['id_user'],
-        steering_wheel_position=data['steering_wheel_position'],
         car_brand_id=data['car_brand_id'],
         color_id=data['car_color_id'],
         some_wishes=message.text,

@@ -30,6 +30,10 @@ class User(models.Model):
         default='ru',
         choices=LANGUAGES
     )
+    registration_date = models.DateTimeField(
+        verbose_name='Registration date',
+        auto_now_add=True
+    )
 
     def __str__(self):
         return self.full_name
@@ -51,6 +55,7 @@ class CarBrand(models.Model):
 
 
 class CarModel(models.Model):
+
     class Meta:
         verbose_name = 'car model'
         verbose_name_plural = 'Car models'
@@ -69,6 +74,9 @@ class CarModel(models.Model):
         verbose_name='Description',
         null=True
     )
+
+    def __str__(self):
+        return self.name
 
 
 class CarModelPhoto(models.Model):
@@ -93,13 +101,12 @@ class CarOrder(models.Model):
     customer = models.ForeignKey(
         'User',
         verbose_name='Customer',
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='customer'
     )
     car = models.ForeignKey(
         'CarModel',
         verbose_name='Car',
-        null=True,
         on_delete=models.PROTECT
     )
     some_wishes = models.TextField(
@@ -112,7 +119,7 @@ class CarOrder(models.Model):
     seller = models.ForeignKey(
         'User',
         verbose_name='Seller',
-        on_delete=models.PROTECT,
+        on_delete=models.SET_NULL,
         null=True,
         related_name='seller'
     )

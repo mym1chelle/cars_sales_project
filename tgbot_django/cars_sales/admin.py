@@ -3,7 +3,8 @@ from .models import (
     User,
     CarOrder,
     CarBrand,
-    CarColor,
+    CarModel,
+    CarModelPhoto
 )
 
 
@@ -24,8 +25,7 @@ class CarOrderAdmin(admin.ModelAdmin):
         'id',
         'created_at',
         'customer',
-        'car_brand',
-        'color',
+        'car',
         'some_wishes',
         'order_status',
         'seller'
@@ -40,9 +40,16 @@ class CardBrandAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(CarColor)
-class CarColorAdmin(admin.ModelAdmin):
-    list_display = (
-        'id',
-        'name'
-    )
+class CarPhotoModelAdmin(admin.TabularInline):
+    model = CarModelPhoto
+
+
+@admin.register(CarModel)
+class CarModelAdmin(admin.ModelAdmin):
+    # list_display = (
+    #     'id',
+    #     'brand',
+    #     'name',
+    #     'description',
+    # )
+    inlines = [CarPhotoModelAdmin,]

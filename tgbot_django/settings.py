@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from tgbot.config import load_config
+import os
 
 
 # load telegram bot config
@@ -133,3 +134,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # нужно для построения загрузки файлов
+MEDIA_URL = '/media/'  # нужно для построения url

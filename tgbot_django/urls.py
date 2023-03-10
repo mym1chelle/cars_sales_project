@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from tgbot_django import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:  # она стоит True когда ведется режим разработки проекта
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

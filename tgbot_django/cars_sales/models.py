@@ -50,19 +50,38 @@ class CarBrand(models.Model):
         return self.name
 
 
-class CarColor(models.Model):
-
+class CarModel(models.Model):
     class Meta:
-        verbose_name = 'car color'
-        verbose_name_plural = 'Car colors'
-
+        verbose_name = 'car model'
+        verbose_name_plural = 'Car models'
     name = models.CharField(
-        max_length=100,
-        verbose_name='Color'
+        max_length=250,
+        verbose_name='Model'
     )
 
-    def __str__(self):
-        return self.name
+    brand = models.ForeignKey(
+        'CarBrand',
+        verbose_name='Brand',
+        on_delete=models.CASCADE
+    )
+
+    description = models.TextField(
+        verbose_name='Description',
+        null=True
+    )
+
+
+class CarModelPhoto(models.Model):
+    class Meta:
+        verbose_name = 'car model photo'
+        verbose_name_plural = 'Car model photos'
+    car = models.ForeignKey(
+        'CarModel',
+        on_delete=models.CASCADE
+    )
+    photo = models.ImageField(
+        verbose_name='Photo', upload_to='photos/%Y/%m/%d/', null=True
+    )
 
 
 class CarOrder(models.Model):
@@ -77,18 +96,11 @@ class CarOrder(models.Model):
         on_delete=models.PROTECT,
         related_name='customer'
     )
-
-    car_brand = models.ForeignKey(
-        'CarBrand',
-        verbose_name='Car brand',
+    car = models.ForeignKey(
+        'CarModel',
+        verbose_name='Car',
         null=True,
-        on_delete=models.SET_NULL
-    )
-    color = models.ForeignKey(
-        'CarColor',
-        verbose_name='Car color',
-        null=True,
-        on_delete=models.SET_NULL
+        on_delete=models.PROTECT
     )
     some_wishes = models.TextField(
         verbose_name='Wishes to order',
@@ -104,6 +116,5 @@ class CarOrder(models.Model):
         null=True,
         related_name='seller'
     )
-
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name='Created at')

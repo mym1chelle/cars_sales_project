@@ -8,7 +8,9 @@ def get_page_number(iterable, page_number: int = 1):
     page_number: (int) page number
     """
     page_index = page_number - 1
-    return iterable[page_index]
+    if iterable:
+        return iterable[page_index]
+    return None
 
 
 async def get_current_car_info(car_model_id: int, current_page: int = 1):

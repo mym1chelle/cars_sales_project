@@ -86,17 +86,25 @@ async def select_car_model(
         car_model_id=car_model_id
     )
     await call.message.delete()
-    await call.message.answer_photo(
-        photo=types.InputFile(
-            '.' + photo.photo.url
-        ),
-        caption=car_info(car_model=model),
-        reply_markup=await select_car_model_keyboard(
-            count_pages=count_photos,
-            car_brand_id=car_brand_id,
-            car_model_id=car_model_id
-        )
+    text = car_info(car_model=model)
+    markup = await select_car_model_keyboard(
+        count_pages=count_photos,
+        car_brand_id=car_brand_id,
+        car_model_id=car_model_id
     )
+    if photo:
+        await call.message.answer_photo(
+            photo=types.InputFile(
+                '.' + photo.photo.url
+            ),
+            caption=text,
+            reply_markup=markup
+        )
+    else:
+        await call.message.answer(
+            text=text,
+            reply_markup=markup
+        )
 
 
 async def show_chosen_photo(
@@ -108,11 +116,11 @@ async def show_chosen_photo(
     Additionally, data is taken from callback data
     to return to the previous menu
     """
-    current_page = int(callback_data.get('page_number'))
-    car_brand_id = int(callback_data.get('car_brand_id'))
-    car_model_id = int(callback_data.get('car_model_id'))
+    current_page=int(callback_data.get('page_number'))
+    car_brand_id=int(callback_data.get('car_brand_id'))
+    car_model_id=int(callback_data.get('car_model_id'))
 
-    photo, count_photos, model = await get_current_car_info(
+    photo, count_photos, model=await get_current_car_info(
         car_model_id=car_model_id,
         current_page=current_page
     )
@@ -138,12 +146,12 @@ async def add_order_wishes(
         callback_data: dict,
         state: FSMContext
 ):
-    car_model_id = int(callback_data.get('car_model_id'))
-    car_brand_id = int(callback_data.get('car_brand_id'))
+    car_model_id=int(callback_data.get('car_model_id'))
+    car_brand_id=int(callback_data.get('car_brand_id'))
     print(car_brand_id)
     print(car_model_id)
     await call.message.delete()
-    message = await call.message.answer(
+    message=await call.message.answer(
         text=_('Add a comment to the order:'),
         reply_markup=await get_order_wishes_keyboard(
             car_model_id=car_model_id,
@@ -151,8 +159,8 @@ async def add_order_wishes(
         )
     )
     async with state.proxy() as data:
-        data['car_model_id'] = car_model_id
-        data['message_id'] = message.message_id
+        data['car_model_id']=car_model_id
+        data['message_id']=message.message_id
     await CreateOrderStates.add_order_wishes.set()
 
 
@@ -160,22 +168,22 @@ async def save_order_wishes(
     message: types.Message,
     state: FSMContext
 ):
-    data = await state.get_data()
+    data=await state.get_data()
     await bot.delete_message(
         chat_id=message.from_id,
         message_id=message.message_id
     )
     print(message.from_id)
-    user = await get_user(user_id=message.from_id)
-    order = await add_order(
+    user=await get_user(user_id=message.from_id)
+    order=await add_order(
         customer_id=user.id,
         car_model_id=data['car_model_id'],
         some_wishes=message.text,
 
     )
 
-    show_order = order_info_for_customer(order=order)
-    text = _("""
+    show_order=order_info_for_customer(order=order)
+    text=_("""
 Your order
 {order}
 has been created"""
@@ -194,17 +202,17 @@ async def navigate(
         callback_data: dict
 ):
     """Function for navigating through the inline menu"""
-    current_level = str(callback_data.get('level'))
-    car_brand_id = callback_data.get('car_brand_id')
-    car_model_id = callback_data.get('car_model_id')
-    message_id = callback_data.get('message_id')
+    current_level=str(callback_data.get('level'))
+    car_brand_id=callback_data.get('car_brand_id')
+    car_model_id=callback_data.get('car_model_id')
+    message_id=callback_data.get('message_id')
 
-    levels = {
+    levels={
         '0': select_car_brand,
         '1': show_car_models,
         '2': select_car_model
     }
-    current_level_func = levels[current_level]
+    current_level_func=levels[current_level]
 
     await current_level_func(
         call=call,

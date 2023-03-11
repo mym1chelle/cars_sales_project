@@ -1,14 +1,14 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.callback_data import CallbackData
 
-from tgbot.models.db_commands.car import (
+from tgbot.models.db_commands.car_brand import (
     count_car_brands,
     select_all_car_brands,
 )
-from tgbot.models.db_commands.color import (
-    count_car_colors,
-    select_all_car_colors
-)
+# from tgbot.models.db_commands.color import (
+#     count_car_colors,
+#     select_all_car_colors
+# )
 from tgbot.middlewares.translate import _
 
 

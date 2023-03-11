@@ -35,8 +35,7 @@ class CarOrderAdmin(admin.ModelAdmin):
 @admin.register(CarBrand)
 class CardBrandAdmin(admin.ModelAdmin):
     list_display = (
-        'id',
-        'name'
+        'name',
     )
 
 
@@ -46,10 +45,9 @@ class CarPhotoModelAdmin(admin.TabularInline):
 
 @admin.register(CarModel)
 class CarModelAdmin(admin.ModelAdmin):
-    # list_display = (
-    #     'id',
-    #     'brand',
-    #     'name',
-    #     'description',
-    # )
+    list_display = (
+        'brand',
+        'name',
+        'description'
+    )
     inlines = [CarPhotoModelAdmin,]

@@ -72,11 +72,12 @@ class CarModel(models.Model):
 
     description = models.TextField(
         verbose_name='Description',
-        null=True
+        blank=True,
+        null=True,
     )
 
     def __str__(self):
-        return self.name
+        return f'{self.brand} {self.name}'
 
 
 class CarModelPhoto(models.Model):

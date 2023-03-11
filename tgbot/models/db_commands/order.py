@@ -5,15 +5,13 @@ from tgbot_django.cars_sales.models import CarOrder, User
 @sync_to_async
 def add_order(
     customer_id,
-    car_brand_id,
-    color_id,
+    car_model_id,
     some_wishes=None,
 ):
     """Creates a new order"""
     return CarOrder.objects.create(
         customer_id=customer_id,
-        car_brand_id=car_brand_id,
-        color_id=color_id,
+        car_id=car_model_id,
         some_wishes=some_wishes
     )
 

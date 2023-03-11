@@ -2,18 +2,18 @@ from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 from tgbot.middlewares.translate import _
 from tgbot.filters.seller_filter import SellerFilter
-from tgbot.models.db_commands.car import (
+from tgbot.models.db_commands.car_brand import (
     get_car_brand,
     add_car_brand,
     change_car_brand,
     delete_car_brand
 )
-from tgbot.models.db_commands.color import (
-    get_car_color,
-    add_car_color,
-    change_car_color,
-    delete_car_color
-)
+# from tgbot.models.db_commands.color import (
+#     get_car_color,
+#     add_car_color,
+#     change_car_color,
+#     delete_car_color
+# )
 from tgbot.keyboards.data import (
     data_menu_callback_data,
     all_data_menu_keyboard,

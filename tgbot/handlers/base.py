@@ -1,13 +1,14 @@
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 from tgbot.misc.create_order_states import CreateOrderStates
+from tgbot.misc.pagination import get_current_car_info
+from tgbot.models.db_commands.user import get_user
 from tgbot.models.db_commands.order import add_order, get_order
-from tgbot.models.db_commands.car import get_car_brand
-from tgbot.models.db_commands.color import get_car_color
+from tgbot.models.db_commands.car_brand import get_car_brand
+# from tgbot.models.db_commands.color import get_car_color
 from tgbot.keyboards.order import (
-    select_car_brand_keyboard,
-    select_car_color_keyboard,
-    get_order_wishes_keyboard
+    create_order_back_callback_data,
+    select_car_model_keyboard
 )
 from tgbot.keyboards.admin_orders import (
     orders_menu_callback_data,
@@ -22,7 +23,8 @@ from tgbot.keyboards.data import (
 )
 from tgbot.services.order_info import (
     order_info_for_customer,
-    order_info_admin_menu_with_status
+    order_info_admin_menu_with_status,
+    car_info
 )
 from tgbot.middlewares.translate import _
 from bot_setting import bot, dp
@@ -30,33 +32,38 @@ from bot_setting import bot, dp
 
 async def back_button_in_create_order(
     call: types.CallbackQuery,
+    callback_data: dict,
     state: FSMContext
 ):
     """
     Back button to navigate through the states when creating an order
     """
-    await CreateOrderStates.previous()
-
     get_current_state = await state.get_state()
+    print(get_current_state)
 
     if get_current_state is None:
         return
 
-    elif get_current_state == 'CreateOrderStates:select_car_brand':
-        await call.message.edit_text(
-            text=_('Choose a car brand:'),
-            reply_markup=await select_car_brand_keyboard()
-        )
-    elif get_current_state == 'CreateOrderStates:select_car_color':
-        await call.message.edit_text(
-            text=_('Choose car color:'),
-            reply_markup=await select_car_color_keyboard()
-        )
     elif get_current_state == 'CreateOrderStates:add_order_wishes':
-        await call.message.edit_text(
-            text=_('Add a comment to the order:'),
-            reply_markup=await get_order_wishes_keyboard()
+        car_model_id = callback_data.get('car_model_id')
+        car_brand_id = callback_data.get('car_brand_id')
+
+        photo, count_photos, model = await get_current_car_info(
+            car_model_id=car_model_id
         )
+        await call.message.delete()
+        await call.message.answer_photo(
+            photo=types.InputFile(
+                '.' + photo.photo.url
+            ),
+            caption=car_info(car_model=model),
+            reply_markup=await select_car_model_keyboard(
+                count_pages=count_photos,
+                car_brand_id=car_brand_id,
+                car_model_id=car_model_id
+            )
+        )
+        await state.finish()
 
 
 async def back_button_for_states(
@@ -172,10 +179,10 @@ async def create_order_without_wishes(
 ):
     """Creating an order without adding comments to the order"""
     data = await state.get_data()
+    user = await get_user(user_id=call.from_user.id)
     order = await add_order(
-        customer_id=data['id_user'],
-        car_brand_id=data['car_brand_id'],
-        color_id=data['car_color_id'],
+        customer_id=user.id,
+        car_model_id=data['car_model_id']
     )
     show_order = order_info_for_customer(order=order)
     text = _("""
@@ -241,7 +248,7 @@ def register_back_button_for_states(dp: Dispatcher):
 def register_of_additional_ordeer_buttons(dp: Dispatcher):
     dp.register_callback_query_handler(
         back_button_in_create_order,
-        text='back_create_order',
+        create_order_back_callback_data.filter(),
         state='*'
     )
     dp.register_callback_query_handler(

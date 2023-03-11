@@ -1,13 +1,28 @@
-from tgbot_django.cars_sales.models import CarOrder
+from tgbot_django.cars_sales.models import CarOrder, CarModel
 from tgbot.middlewares.translate import _
 
 
+def car_info(car_model: CarModel):
+    if car_model.description:
+        return _("""{brand} {model}
+
+Description:
+{description}
+    """).format(
+            brand=car_model.brand,
+            model=car_model.name,
+            description=car_model.description
+        )
+    else:
+        return '{brand} {model}'.format(
+            brand=car_model.brand,
+            model=car_model.name
+        )
+
+
 def order_info_for_customer(order: CarOrder):
-    return _("""Model car: {car_brand}
-Color: {color}""").format(
-        car_brand=order.car_brand,
-        color=order.color
-    )
+    car_model = order.car
+    return car_info(car_model=car_model)
 
 
 def order_info_string(order: CarOrder):

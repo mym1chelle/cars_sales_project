@@ -4,8 +4,6 @@ from tgbot.misc.create_order_states import CreateOrderStates
 from tgbot.misc.pagination import get_current_car_info
 from tgbot.models.db_commands.user import get_user
 from tgbot.models.db_commands.order import add_order, get_order
-from tgbot.models.db_commands.car_brand import get_car_brand
-# from tgbot.models.db_commands.color import get_car_color
 from tgbot.keyboards.order import (
     create_order_back_callback_data,
     select_car_model_keyboard
@@ -16,15 +14,11 @@ from tgbot.keyboards.admin_orders import (
     order_group_action_menu_keyboard
 )
 from tgbot.keyboards.chat import chat_callback_data
-from tgbot.keyboards.data import (
-    data_menu_callback_data,
-    queryset_list_keyboard,
-    select_item_menu_keyboard
-)
+
 from tgbot.services.order_info import (
     order_info_for_customer,
     order_info_admin_menu_with_status,
-    car_info
+    car_info_full
 )
 from tgbot.middlewares.translate import _
 from bot_setting import bot, dp
@@ -39,7 +33,6 @@ async def back_button_in_create_order(
     Back button to navigate through the states when creating an order
     """
     get_current_state = await state.get_state()
-    print(get_current_state)
 
     if get_current_state is None:
         return
@@ -56,7 +49,7 @@ async def back_button_in_create_order(
             photo=types.InputFile(
                 '.' + photo.photo.url
             ),
-            caption=car_info(car_model=model),
+            caption=car_info_full(car_model=model),
             reply_markup=await select_car_model_keyboard(
                 count_pages=count_photos,
                 car_brand_id=car_brand_id,
@@ -72,10 +65,7 @@ async def back_button_for_states(
         state: FSMContext,
 ):
     """
-    Function to navigate back through states. Used in:
-
-    — admin menu
-    — data menu
+    Function to navigate back through states. Used in admin menu
     """
     get_current_state = await state.get_state()
 
@@ -101,40 +91,6 @@ async def back_button_for_states(
                 order_id=order_id,
                 user_id=call.from_user.id
             )
-        )
-    elif get_current_state == 'add_new_item':
-        await state.finish()
-        filter = callback_data.get('filter')
-        if filter == 'cars':
-            text = _('Car brands:')
-        elif filter == 'colors':
-            text = _('Car colors:')
-        markup = await queryset_list_keyboard(filter=filter)
-        await call.message.edit_text(
-            text=text,
-            reply_markup=markup
-        )
-    elif get_current_state == 'change_item':
-        await state.finish()
-        filter = callback_data.get('filter')
-        action = callback_data.get('action')
-        brand_id = callback_data.get('brand_id')
-        color_id = callback_data.get('color_id')
-        if brand_id:
-            car_brand = await get_car_brand(brand_id=brand_id)
-            text = car_brand.name
-        elif color_id:
-            car_color = await get_car_color(color_id=color_id)
-            text = car_color.name
-        markup = await select_item_menu_keyboard(
-            filter=filter,
-            action=action,
-            brand_id=brand_id,
-            color_id=color_id
-        )
-        await call.message.edit_text(
-            text=text,
-            reply_markup=markup
         )
 
 
@@ -203,17 +159,7 @@ def register_cancel_or_exit_buttons(dp: Dispatcher):
     )
     dp.register_callback_query_handler(
         cancel_or_exit_buttons,
-        text='cancel_create_order',
-        state='*'
-    )
-    dp.register_callback_query_handler(
-        cancel_or_exit_buttons,
         text='exit_admin_menu',
-        state='*'
-    )
-    dp.register_callback_query_handler(
-        cancel_or_exit_buttons,
-        text='exit_data_menu',
         state='*'
     )
     dp.register_callback_query_handler(
@@ -232,16 +178,6 @@ def register_back_button_for_states(dp: Dispatcher):
         back_button_for_states,
         orders_menu_callback_data.filter(),
         state='create_chat'
-    )
-    dp.register_callback_query_handler(
-        back_button_for_states,
-        data_menu_callback_data.filter(),
-        state='add_new_item'
-    )
-    dp.register_callback_query_handler(
-        back_button_for_states,
-        data_menu_callback_data.filter(),
-        state='change_item'
     )
 
 

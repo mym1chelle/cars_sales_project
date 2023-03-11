@@ -295,7 +295,7 @@ async def only_one_order_menu_keyboard(
                 close_status_button
             ]
         markup.add(*buttons)
-    elif filter == 'unselected' or filter == 'selected':
+    if filter == 'unselected' or filter == 'selected':
         # After selecting an order or canceling the selection,
         # you need to return not to the previous level,
         # but two levels higher in the general menu of orders

@@ -9,7 +9,6 @@ django_setting()
 from tgbot.filters.seller_filter import SellerFilter
 
 from tgbot.handlers.menu.admin_orders import register_admin_menu
-from tgbot.handlers.menu.data import register_data_menu
 from tgbot.handlers.menu.languages import registration_language_menu
 
 from tgbot.handlers.order import register_create_order
@@ -40,7 +39,6 @@ def register_all_filters(dp):
 
 def register_all_handlers(dp):
     register_admin_menu(dp)
-    register_data_menu(dp)
     registration_language_menu(dp)
     register_create_order(dp)
     register_sending_post(dp)

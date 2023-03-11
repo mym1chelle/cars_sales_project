@@ -11,6 +11,9 @@ async def sending_post_for_all_clients(
     message: types.Message,
     state=FSMContext
 ):
+    """
+    Sending a post to all users. Post can contain any files.
+    """
     user_id = message.from_user.id
     all_client_ids = await get_all_clients_user_ids()
     data = await state.get_data()
@@ -19,12 +22,10 @@ async def sending_post_for_all_clients(
         chat_id=user_id,
         message_id=message_id
     )
-    await message.delete()
     if all_client_ids:
         for id in all_client_ids:
-            await bot.send_message(
-                chat_id=id,
-                text=message.text
+            await message.copy_to(
+                chat_id=id
             )
         await message.answer(
             text=_('Post published'),
@@ -39,10 +40,12 @@ async def sending_post_for_all_clients(
                 user_id=user_id, filter='send_post'
             )
         )
+    await message.delete()
     await state.finish()
 
 
 def register_sending_post(dp: Dispatcher):
     dp.register_message_handler(
-        sending_post_for_all_clients, state='send_post'
+        sending_post_for_all_clients, state='send_post',
+        content_types=types.ContentTypes.ANY
     )

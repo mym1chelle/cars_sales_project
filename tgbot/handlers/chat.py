@@ -11,6 +11,12 @@ async def create_chat_with_customer(
     message: types.Message,
     state: FSMContext
 ):
+    """
+    Creating a chat with the customer.
+    After sending the message, it displays a
+    keyboard with the "Leave chat" button.
+    The message can contain any files.
+    """
     data = await state.get_data()
     message_id = data.get('message_id')
     id_customer = data.get('customer_id')
@@ -27,16 +33,15 @@ async def create_chat_with_customer(
     )
 
     first_message_in_chat = _("""
-<b>Message from the seller</b>
-
-{message}
-""").format(message=message.text)
+<b>Message from the seller</b>""")
 
     await bot.send_message(
         text=first_message_in_chat,
         chat_id=customer.user_id
     )
-
+    await message.copy_to(
+        chat_id=customer.user_id
+    )
     async with state.proxy() as data:
         data['customer_id'] = customer.user_id
     await state.set_state('live_chat')
@@ -54,15 +59,27 @@ async def seller_and_customer_сhat(
         message: types.Message,
         state: FSMContext
 ):
+    """Chat between seller and customer.
+    In the chat, you can send messages containing any files.
+    After the chat is ended by the seller, the messages are not processed.
+    """
     data = await state.get_data()
     seller_id = data.get('seller_id')
     customer_id = data.get('customer_id')
     if customer_id:
-        await bot.send_message(chat_id=customer_id, text=message.text)
+        await message.copy_to(chat_id=customer_id)
     elif seller_id:
-        await bot.send_message(chat_id=seller_id, text=message.text)
+        await message.copy_to(chat_id=seller_id)
 
 
 def register_chat_with_customer(dp: Dispatcher):
-    dp.register_message_handler(create_chat_with_customer, state='create_chat')
-    dp.register_message_handler(seller_and_customer_сhat, state='live_chat')
+    dp.register_message_handler(
+        create_chat_with_customer,
+        state='create_chat',
+        content_types=types.ContentTypes.ANY
+    )
+    dp.register_message_handler(
+        seller_and_customer_сhat,
+        state='live_chat',
+        content_types=types.ContentTypes.ANY
+    )

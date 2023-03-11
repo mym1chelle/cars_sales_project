@@ -2,13 +2,19 @@ from tgbot_django.cars_sales.models import CarOrder, CarModel
 from tgbot.middlewares.translate import _
 
 
-def car_info(car_model: CarModel):
+def _car_info_for_button(car_model: CarModel):
+    return '{brand} {model}'.format(
+        brand=car_model.brand,
+        model=car_model.name
+    )
+
+
+def car_info_full(car_model: CarModel):
     if car_model.description:
         return _("""{brand} {model}
 
-Description:
-{description}
-    """).format(
+<em>Description:</em>
+{description}""").format(
             brand=car_model.brand,
             model=car_model.name,
             description=car_model.description
@@ -22,38 +28,45 @@ Description:
 
 def order_info_for_customer(order: CarOrder):
     car_model = order.car
-    return car_info(car_model=car_model)
+    return car_info_full(car_model=car_model)
 
 
 def order_info_string(order: CarOrder):
-    return '{car_brand} ({color})'.format(
-        car_brand=order.car_brand,
-        color=order.color
+    return _car_info_for_button(
+        car_model=order.car
     )
 
 
 def order_info_admin_menu_without_status(order: CarOrder):
-    order_info = order_info_string(order)
+    car = car_info_full(car_model=order.car)
     if order.some_wishes:
-        return _("""Order: {order}
+        return _("""<b>Order</b>
+{car}
+
 Comment to the order:
-{comment}""").format(order=order_info, comment=order.some_wishes)
+{comment}""").format(car=car, comment=order.some_wishes)
     else:
-        return _('Order: {order}').format(order=order_info)
+        return _("""<b>Order</b>
+{car}""").format(car=car)
 
 
 def order_info_admin_menu_with_status(order: CarOrder):
-    order_info = order_info_string(order)
+    car = car_info_full(car_model=order.car)
     if order.some_wishes:
-        return _("""Order: {order}
+        return _("""<b>Order</b>
+{car}
+
 Order status: {status}
+
 Comment to the order:
 {comment}""").format(
-            order=order_info,
+            car=car,
             status=order.order_status,
             comment=order.some_wishes)
     else:
-        return _("""Order: {order}
+        return _("""<b>Order</b>
+{car}
+
 Order status: {status}""").format(
-            order=order_info,
+            car=car,
             status=order.order_status)

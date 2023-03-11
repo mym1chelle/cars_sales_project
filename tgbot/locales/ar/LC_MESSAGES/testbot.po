@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-09 14:23+0400\n"
+"POT-Creation-Date: 2023-03-12 01:13+0400\n"
 "PO-Revision-Date: 2023-03-04 23:03+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -23,40 +23,17 @@ msgstr ""
 msgid "You do not have sufficient rights to use this feature"
 msgstr "ليس لديك حقوق كافية لاستخدام هذه الميزة"
 
-#: tgbot/handlers/base.py:47 tgbot/handlers/order.py:29
-msgid "Choose a car brand:"
-msgstr "اختر ماركة السيارة:"
-
-#: tgbot/handlers/base.py:52 tgbot/handlers/order.py:42
-msgid "Choose car color:"
-msgstr "اختر لون السيارة:"
-
-#: tgbot/handlers/base.py:57 tgbot/handlers/order.py:56
-msgid "Add a comment to the order:"
-msgstr "أضف تعليقًا على الطلب:"
-
-#: tgbot/handlers/base.py:80 tgbot/handlers/menu/admin_orders.py:46
+#: tgbot/handlers/base.py:77 tgbot/handlers/menu/admin_orders.py:46
 #: tgbot/handlers/menu/admin_orders.py:49
-#: tgbot/handlers/menu/admin_orders.py:69 tgbot/handlers/menu/data.py:45
-#: tgbot/handlers/menu/data.py:48
+#: tgbot/handlers/menu/admin_orders.py:69
 msgid "Menu:"
 msgstr "قائمة طعام:"
 
-#: tgbot/handlers/base.py:102 tgbot/handlers/menu/data.py:58
-#: tgbot/handlers/menu/data.py:372
-msgid "Car brands:"
-msgstr "ماركات السيارات:"
-
-#: tgbot/handlers/base.py:104 tgbot/handlers/menu/data.py:60
-#: tgbot/handlers/menu/data.py:394
-msgid "Car colors:"
-msgstr "ألوان السيارة:"
-
-#: tgbot/handlers/base.py:145
+#: tgbot/handlers/base.py:108
 msgid "You have left the chat"
 msgstr "لقد غادرت الدردشة"
 
-#: tgbot/handlers/base.py:146
+#: tgbot/handlers/base.py:109
 msgid ""
 "\n"
 "<b>The seller has left the chat</b>\n"
@@ -68,7 +45,7 @@ msgstr ""
 "\n"
 "لن يتم إرسال رسائل أخرى."
 
-#: tgbot/handlers/base.py:181 tgbot/handlers/order.py:85
+#: tgbot/handlers/base.py:144 tgbot/handlers/order.py:187
 msgid ""
 "\n"
 "Your order\n"
@@ -80,27 +57,35 @@ msgstr ""
 "{order}\n"
 "تم إنشاء"
 
-#: tgbot/handlers/chat.py:22
+#: tgbot/handlers/chat.py:28
 msgid "You started a chat with a client"
 msgstr "لقد بدأت محادثة مع عميل"
 
-#: tgbot/handlers/chat.py:29
+#: tgbot/handlers/chat.py:35
 msgid ""
 "\n"
-"<b>Message from the seller</b>\n"
-"\n"
-"{message}\n"
+"<b>Message from the seller</b>"
 msgstr ""
 "\n"
-"<b> رسالة من البائع </b>\n"
-"\n"
-"{message}\n"
+"<b> رسالة من البائع </b>"
 
-#: tgbot/handlers/post.py:30
+#: tgbot/handlers/order.py:38
+msgid "Choose a car brand:"
+msgstr "اختر ماركة السيارة:"
+
+#: tgbot/handlers/order.py:67
+msgid "Choose car model:"
+msgstr "اختر طراز السيارة:"
+
+#: tgbot/handlers/order.py:156
+msgid "Add a comment to the order:"
+msgstr "أضف تعليقًا على الطلب:"
+
+#: tgbot/handlers/post.py:31
 msgid "Post published"
 msgstr "تم نشر المنشور"
 
-#: tgbot/handlers/post.py:37
+#: tgbot/handlers/post.py:38
 msgid "Clients not found"
 msgstr "لم يتم العثور على العملاء"
 
@@ -128,108 +113,6 @@ msgstr "أدخل رسالتك:"
 msgid "Order {order} status has been changed"
 msgstr "تم تغيير حالة الطلب {order}"
 
-#: tgbot/handlers/menu/data.py:76
-msgid "Enter a new car brand name (no more than 150 characters):"
-msgstr "أدخل اسم علامة تجارية جديدة للسيارة (لا يزيد عن 150 حرفًا):"
-
-#: tgbot/handlers/menu/data.py:86
-msgid "Enter a new color name (no more than 100 characters):"
-msgstr "أدخل اسم لون جديدًا (لا يزيد عن 100 حرف):"
-
-#: tgbot/handlers/menu/data.py:120
-msgid ""
-"Enter a new car brand name, old name «{name}»\n"
-"(no more than 150 characters):"
-msgstr ""
-"أدخل اسم علامة تجارية جديدة للسيارة ، الاسم القديم «{name}»\n"
-"(لا يزيد عن 150 حرفًا):"
-
-#: tgbot/handlers/menu/data.py:128 tgbot/handlers/menu/data.py:141
-msgid "Are you sure you want to delete «{name}»?:"
-msgstr "هل أنت متأكد أنك تريد حذف «{name}» ؟:"
-
-#: tgbot/handlers/menu/data.py:133
-msgid ""
-"Enter a new color name, old name «{name}»\n"
-"(no more than 100 characters):"
-msgstr ""
-"أدخل اسم لون جديد ، اسم قديم «{name}»\n"
-"(لا يزيد عن 100 حرف):"
-
-#: tgbot/handlers/menu/data.py:197
-msgid ""
-"\n"
-"<b>The number of characters is more than 150.Try again.</b>\n"
-"Enter a new car brand name (no more than 150 characters):"
-msgstr ""
-"\n"
-"<b>عدد الأحرف أكثر من 150 حرفًا ، حاول مرة أخرى.</b>\n"
-"أدخل اسم علامة تجارية جديدة للسيارة (لا يزيد عن 150 حرفًا):"
-
-#: tgbot/handlers/menu/data.py:209
-msgid "The brand of the car «{brand}» has been added"
-msgstr "تمت إضافة ماركة السيارة «{brand}»"
-
-#: tgbot/handlers/menu/data.py:228 tgbot/handlers/menu/data.py:309
-msgid ""
-"\n"
-"<b>The number of characters is more than 100. Try again.</b>\n"
-"\n"
-"Enter a new color name (no more than 100 characters):\n"
-msgstr ""
-"\n"
-"<b>عدد الأحرف أكثر من 100 حرف. حاول مرة أخرى.</b>\n"
-"\n"
-"أدخل اسم لون جديدًا (لا يزيد عن 100 حرف):\n"
-
-#: tgbot/handlers/menu/data.py:240
-msgid "Car color «{color}» has been added"
-msgstr "تمت إضافة لون السيارة «{color}»"
-
-#: tgbot/handlers/menu/data.py:267
-msgid ""
-"\n"
-"<b>The number of characters is more than 150. Try again.</b>\n"
-"\n"
-"Enter a new car brand name (no more than 150 characters):\n"
-msgstr ""
-"\n"
-"<b>عدد الأحرف أكثر من 150 حرفًا. حاول مرة أخرى.</b>\n"
-"\n"
-"أدخل اسم علامة تجارية جديدة للسيارة (لا يزيد عن 150 حرفًا):\n"
-
-#: tgbot/handlers/menu/data.py:285
-msgid "The car model has been changed to «{brand}»"
-msgstr "تم تغيير طراز السيارة إلى «{علامة تجارية}»"
-
-#: tgbot/handlers/menu/data.py:289
-msgid "An error occurred while editing car model"
-msgstr "حدث خطأ أثناء تعديل طراز السيارة"
-
-#: tgbot/handlers/menu/data.py:327
-msgid "The color has been changed to «{color}»"
-msgstr "تم تغيير اللون إلى «{color}»"
-
-#: tgbot/handlers/menu/data.py:331
-msgid "An error occurred while changing the color"
-msgstr "حدث خطأ أثناء تغيير اللون"
-
-#: tgbot/handlers/menu/data.py:357
-msgid "The car brand has been successfully deleted"
-msgstr "تم حذف ماركة السيارة بنجاح"
-
-#: tgbot/handlers/menu/data.py:361
-msgid "An error occurred while deleting a car brand"
-msgstr "حدث خطأ أثناء حذف ماركة السيارة"
-
-#: tgbot/handlers/menu/data.py:379
-msgid "Car color has been successfully removed"
-msgstr "تمت إزالة لون السيارة بنجاح"
-
-#: tgbot/handlers/menu/data.py:383
-msgid "An error occurred while deleting a car color"
-msgstr "حدث خطأ أثناء حذف لون السيارة"
-
 #: tgbot/handlers/menu/languages.py:15
 msgid "Choose language:"
 msgstr "اختر اللغة:"
@@ -252,9 +135,7 @@ msgstr "إرسال آخر"
 
 #: tgbot/keyboards/admin_orders.py:83 tgbot/keyboards/admin_orders.py:148
 #: tgbot/keyboards/admin_orders.py:227 tgbot/keyboards/admin_orders.py:327
-#: tgbot/keyboards/admin_orders.py:358 tgbot/keyboards/data.py:75
-#: tgbot/keyboards/data.py:146 tgbot/keyboards/data.py:209
-#: tgbot/keyboards/data.py:241 tgbot/keyboards/languages.py:64
+#: tgbot/keyboards/admin_orders.py:358 tgbot/keyboards/languages.py:64
 msgid "Exit"
 msgstr "مخرج"
 
@@ -265,9 +146,8 @@ msgstr "طلب {order}"
 #: tgbot/keyboards/admin_orders.py:139 tgbot/keyboards/admin_orders.py:178
 #: tgbot/keyboards/admin_orders.py:217 tgbot/keyboards/admin_orders.py:304
 #: tgbot/keyboards/admin_orders.py:316 tgbot/keyboards/admin_orders.py:347
-#: tgbot/keyboards/data.py:138 tgbot/keyboards/data.py:200
-#: tgbot/keyboards/data.py:230 tgbot/keyboards/order.py:65
-#: tgbot/keyboards/order.py:88
+#: tgbot/keyboards/order.py:98 tgbot/keyboards/order.py:175
+#: tgbot/keyboards/order.py:201
 msgid "Back"
 msgstr "خلف"
 
@@ -303,77 +183,78 @@ msgstr "يغلق"
 msgid "Leave the chat"
 msgstr "اترك الدردشة"
 
-#: tgbot/keyboards/data.py:57
-msgid "Car brands ({count})"
-msgstr "ماركات السيارات ({count})"
-
-#: tgbot/keyboards/data.py:64
-msgid "Car colors ({count})"
-msgstr "ألوان السيارة ({count})"
-
-#: tgbot/keyboards/data.py:103 tgbot/keyboards/data.py:128
-msgid "Add"
-msgstr "يضيف"
-
-#: tgbot/keyboards/data.py:161 tgbot/keyboards/data.py:181
-msgid "Change"
-msgstr "يتغير"
-
-#: tgbot/keyboards/data.py:169 tgbot/keyboards/data.py:189
-msgid "Delete"
-msgstr "يمسح"
-
-#: tgbot/keyboards/data.py:221
-msgid "Yes, delete"
-msgstr "نعم ، احذف"
-
-#: tgbot/keyboards/order.py:42 tgbot/keyboards/order.py:71
-#: tgbot/keyboards/order.py:94
+#: tgbot/keyboards/order.py:72 tgbot/keyboards/order.py:106
+#: tgbot/keyboards/order.py:184 tgbot/keyboards/order.py:210
 msgid "Cancel"
 msgstr "يلغي"
 
-#: tgbot/keyboards/order.py:82
+#: tgbot/keyboards/order.py:166
+msgid "Select"
+msgstr "يختار"
+
+#: tgbot/keyboards/order.py:195
 msgid "No comment"
 msgstr "لا تعليق"
 
-#: tgbot/services/order_info.py:6
+#: tgbot/services/order_info.py:14
 msgid ""
-"Model car: {car_brand}\n"
-"Color: {color}"
+"{brand} {model}\n"
+"\n"
+"<em>Description:</em>\n"
+"{description}"
 msgstr ""
-"سيارة طراز: {car_brand}\n"
-"لون: {color}"
+"{brand} {model}\n"
+"\n"
+"<em>وصف: </em>\n"
+"{description}"
 
-#: tgbot/services/order_info.py:23
+#: tgbot/services/order_info.py:43
 msgid ""
-"Order: {order}\n"
+"<b>Order</b>\n"
+"{car}\n"
+"\n"
 "Comment to the order:\n"
 "{comment}"
 msgstr ""
-"طلب: {order}\n"
+"<b>طلب</b>\n"
+"{car}\n"
+"\n"
 "تعليق على الطلب:\n"
 "{comment}"
 
-#: tgbot/services/order_info.py:27
-msgid "Order: {order}"
-msgstr "طلب:: {order}"
-
-#: tgbot/services/order_info.py:33
+#: tgbot/services/order_info.py:49
 msgid ""
-"Order: {order}\n"
+"<b>Order</b>\n"
+"{car}"
+msgstr ""
+"<b>طلب</b>\n"
+"{car}"
+
+#: tgbot/services/order_info.py:56
+msgid ""
+"<b>Order</b>\n"
+"{car}\n"
+"\n"
 "Order status: {status}\n"
+"\n"
 "Comment to the order:\n"
 "{comment}"
 msgstr ""
-"طلب: {order}\n"
+"<b>طلب</b>\n"
+"{car}\n"
 "حالة الطلب: {status}\n"
+"\n"
 "تعليق على الطلب:\n"
 "{comment}"
 
-#: tgbot/services/order_info.py:41
+#: tgbot/services/order_info.py:67
 msgid ""
-"Order: {order}\n"
+"<b>Order</b>\n"
+"{car}\n"
+"\n"
 "Order status: {status}"
 msgstr ""
-"طلب: {order}\n"
+"<b>طلب</b>\n"
+"{car}\n"
+"\n"
 "حالة الطلب: {status}"

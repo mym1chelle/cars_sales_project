@@ -123,7 +123,7 @@ async def show_chosen_photo(
         car_model_id=car_model_id,
         current_page=current_page
     )
-
+    print(photo.photo.url[1:])
     await call.message.edit_media(
         media=types.InputMediaPhoto(
             types.InputFile(

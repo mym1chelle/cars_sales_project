@@ -126,3 +126,6 @@ class CarOrder(models.Model):
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name='Created at')
+
+    def __str__(self):
+        return f'{self.customer}: {self.car}'

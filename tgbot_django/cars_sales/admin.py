@@ -47,6 +47,7 @@ class CarPhotoModelAdmin(admin.TabularInline):
 @admin.register(CarModel)
 class CarModelAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'brand',
         'name',
         'description'

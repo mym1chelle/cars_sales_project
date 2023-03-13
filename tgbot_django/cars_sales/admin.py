@@ -15,7 +15,8 @@ class UserAdmin(admin.ModelAdmin):
         'user_id',
         'full_name',
         'role',
-        'language'
+        'language',
+        'registration_date'
     )
 
 
